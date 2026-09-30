@@ -580,45 +580,42 @@ function renderExpenseTable() {
     tbody.innerHTML = html;
 }
 
-// 2. Calculation Logic for Expenses, Yellow, Green (COH), Pink, and Red
+/// Function para sa eksaktong kinukwenta ng Yellow, COH, Red, at Pink
 function calculateExpensesAndSummary() {
     let pinkSum = 0;
     
-    // Sum of all amounts in new table
+    // Kunin ang sum ng lahat ng expense amounts (5 rows x 2 columns)
     for (let i = 0; i < 5; i++) {
         const amt1 = parseFloat(document.getElementById(`expAmt1_${i}`)?.value) || 0;
         const amt2 = parseFloat(document.getElementById(`expAmt2_${i}`)?.value) || 0;
         pinkSum += amt1 + amt2;
     }
-    
-    // Get Coll'n Net Total from Table 2 (Total Pay Column)
-    const collnTotal = parseFloat(document.getElementById('totalColln')?.innerText) || 0;
-    
-    // Yellow = Coll'n Net Total + Pink Sum
+
+    // Kunin ang Collection Net Total mula sa Table 2 (Total Pay Column)
+    const rawCollnStr = document.getElementById('totalColln')?.innerText.replace(/,/g, '') || "0";
+    const collnTotal = parseFloat(rawCollnStr) || 0;
+
+    // Yellow = Table 2 Pay Total + Pink Expenses Sum
     const yellowTotal = collnTotal + pinkSum;
-    
-    // COH (Green)
+
+    // COH (Green input)
     const cohInput = parseFloat(document.getElementById('inputCOH')?.value) || 0;
-    
-    // Red (Grand Total) = Yellow - COH
+
+    // Red (Grand Total) = Yellow Total - COH
     const redGrandTotal = yellowTotal - cohInput;
-    
-    // Update UI Displays
-    document.getElementById('pinkTotalDisplay').innerText = pinkSum.toLocaleString();
-    document.getElementById('yellowTotalDisplay').innerText = yellowTotal.toLocaleString();
-    document.getElementById('redGrandTotalDisplay').innerText = redGrandTotal.toLocaleString();
+
+    // Display formatted values
+    document.getElementById('pinkTotalDisplay').innerText = Math.round(pinkSum).toLocaleString();
+    document.getElementById('yellowTotalDisplay').innerText = Math.round(yellowTotal).toLocaleString();
+    document.getElementById('redGrandTotalDisplay').innerText = Math.round(redGrandTotal).toLocaleString();
 }
 
-// 3. Toggle Slider Open / Close
-function toggleExpenseSlider() {
-    const content = document.getElementById('expenseSliderContent');
-    const arrow = document.getElementById('sliderArrow');
-    if (content.style.display === 'none') {
-        content.style.display = 'block';
-        arrow.innerText = '▼';
+function toggleHistoryDrawer() {
+    const container = document.getElementById("historyContainer");
+    if (container.style.display === "none") {
+        container.style.display = "block";
     } else {
-        content.style.display = 'none';
-        arrow.innerText = '►';
+        container.style.display = "none";
     }
 }
 
