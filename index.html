@@ -24,7 +24,7 @@
         }
 
         .main-wrapper {
-            padding: 15px 10px 10px 10px;
+            padding: 6px 4px;
             width: 100%;
             max-width: 650px;
             margin: 0 auto;
@@ -36,19 +36,19 @@
         .session-bar {
             background: #1e293b;
             color: white;
-            padding: 8px 12px;
+            padding: 4px 8px;
             border-radius: 4px 4px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 11px;
             border: 1px solid #d1d5db;
             border-bottom: none;
         }
 
         .session-info {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             font-weight: bold;
         }
 
@@ -66,55 +66,52 @@
         .setup-modal {
             position: relative;
             background: white;
-            padding: 20px;
+            padding: 16px;
             border-radius: 8px;
             width: 90%;
-            max-width: 400px;
+            max-width: 380px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 10px;
-            right: 12px;
+            top: 8px;
+            right: 10px;
             background: transparent;
             border: none;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             color: #6b7280;
             cursor: pointer;
-        }
-
-        .modal-close-btn:hover {
-            color: #111827;
         }
 
         .setup-modal h3 {
             margin-top: 0;
             color: #111827;
             padding-right: 20px;
+            font-size: 16px;
         }
 
         .setup-modal label {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
-            margin-top: 10px;
-            margin-bottom: 4px;
+            margin-top: 8px;
+            margin-bottom: 2px;
         }
 
         .setup-modal input {
             width: 100%;
-            padding: 8px;
+            padding: 6px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .setup-btn {
             width: 100%;
-            margin-top: 15px;
-            padding: 10px;
+            margin-top: 12px;
+            padding: 8px;
             background: #2563eb;
             color: white;
             border: none;
@@ -123,16 +120,12 @@
             cursor: pointer;
         }
 
-        .setup-btn:hover {
-            background: #1d4ed8;
-        }
-
         /* HISTORY DRAWER */
         .history-section {
             background: white;
             border: 1px solid #d1d5db;
-            margin-top: 10px;
-            padding: 10px;
+            margin-top: 6px;
+            padding: 6px;
             border-radius: 4px;
             display: flex;
             flex-direction: column;
@@ -140,17 +133,16 @@
 
         .history-title {
             font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 8px;
+            font-size: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .history-list {
-            max-height: 120px;
+            max-height: 100px;
             overflow-y: auto;
-            font-size: 12px;
+            font-size: 11px;
             border: 1px solid #f3f4f6;
             border-radius: 4px;
             padding: 2px;
@@ -160,24 +152,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px;
+            padding: 4px;
             border-bottom: 1px solid #f3f4f6;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-
-        .history-item.selected-file {
-            background-color: #fef08a !important;
-            border: 1px solid #facc15;
-        }
-
-        .history-item:last-child {
-            border-bottom: none;
         }
 
         .btn-sm {
-            padding: 4px 8px;
-            font-size: 11px;
+            padding: 2px 6px;
+            font-size: 10px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
@@ -188,14 +169,14 @@
 
         .table-box {
             width: 100%;
-            margin: 0 auto 20px auto;
+            margin: 0 auto 10px auto;
             background: white;
             border: 1px solid #d1d5db;
         }
 
         .table-box-2 {
             margin-top: 0;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             border-top: none;
         }
 
@@ -205,11 +186,10 @@
             table-layout: fixed;
         }
 
-        th,
-        td {
+        th, td {
             border: 1px solid #d1d5db;
-            height: 26px; 
-            padding: 2px 4px;
+            height: 18px; 
+            padding: 0px 1px;
             text-align: center;
             vertical-align: middle;
         }
@@ -217,18 +197,18 @@
         th {
             background: #111827;
             color: white;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
         }
 
         td {
             background: white;
-            font-size: 14px;
+            font-size: 11px;
         }
 
         .miki {
             text-align: left;
-            padding-left: 12px;
+            padding-left: 8px;
             font-weight: bold;
         }
 
@@ -241,9 +221,9 @@
             text-align: center;
             font-weight: bold;
             color: #1d4ed8;
-            font-size: 15px;
+            font-size: 13px;
             background: #eff6ff;
-            padding: 4px;
+            padding: 2px;
             border-radius: 4px;
             word-break: break-word;
         }
@@ -251,42 +231,50 @@
         table input {
             width: 100%;
             max-width: 100%;
-            height: 22px;
-            padding: 2px;
+            height: 17px;
+            padding: 0px 2px;
             border: 1px solid #9ca3af;
-            border-radius: 4px;
+            border-radius: 2px;
             text-align: center;
-            font-size: 14px;
+            font-size: 11px;
             background: white;
         }
 
         .miki-net-total-large {
-            font-size: 10px !important;
+            font-size: 9px !important;
             font-weight: bold;
             color: #dc2626;
             text-align: left;
-            padding-left: 12px;
+            padding-left: 6px;
         }
 
         .net-total-large {
-            font-size: 25px !important;
+            font-size: 18px !important;
             font-weight: bold;
             color: #dc2626;
         }
 
+        /* TABLE 2 COMPACT OPTIMIZATIONS FOR SCREENSHOT */
+        .table-box-2 th {
+            font-size: 9px;
+            padding: 1px 0px;
+        }
+
         .table-box-2 td {
-            padding: 1px 2px;
+            height: 17px;
+            padding: 0px 1px;
         }
 
         .table-box-2 table input {
-            font-size: 11px;
-            height: 24px;
-            padding: 1px 2px;
+            font-size: 9.5px;
+            height: 15px;
+            padding: 0px 1px;
+            border-radius: 2px;
         }
 
         .table-box-2 table input.name-input {
             text-align: left;
-            padding-left: 4px;
+            padding-left: 2px;
         }
 
         .table-box-2 table input.readonly-col {
@@ -305,21 +293,10 @@
             font-weight: bold;
         }
 
-        .table-box-2 th, th.lockable-header {
-            font-size: 10px;
-            padding: 2px 1px;
-            cursor: pointer;
-            user-select: none;
-        }
-
         .direct-amount-input {
             width: 100% !important;
-            height: 24px !important;
+            height: 18px !important;
             font-weight: bold;
-        }
-
-        table input:focus {
-            outline: 2px solid #94a3b8;
         }
 
         .amount {
@@ -328,74 +305,129 @@
 
         .sync-panel {
             display: grid;
-            grid-template-columns: repeat(4, 1fr) 90px;
-            gap: 6px;
-            padding: 10px;
+            grid-template-columns: repeat(4, 1fr) 80px;
+            gap: 4px;
+            padding: 6px;
             background: #111827;
             border-top: 1px solid #d1d5db;
             align-items: flex-end;
         }
 
-        .sync-cell {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
         .sync-cell label {
             color: white;
-            font-size: 11px;
+            font-size: 9px;
             font-weight: bold;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             text-transform: uppercase;
+            display: block;
+            text-align: center;
         }
 
         .sync-cell input {
             width: 100%;
-            height: 32px;
-            padding: 4px;
+            height: 24px;
+            padding: 2px;
             border: 1px solid #9ca3af;
-            border-radius: 4px;
+            border-radius: 3px;
             text-align: center;
-            font-size: 14px;
+            font-size: 11px;
             background: white;
         }
 
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
         }
 
         .action-btn {
             width: 100%;
-            height: 32px;
+            height: 24px;
             color: white;
             border: none;
-            border-radius: 4px;
-            font-size: 11px;
+            border-radius: 3px;
+            font-size: 10px;
             font-weight: bold;
             cursor: pointer;
         }
 
         .clear-btn { background: #ef4444; }
-        .clear-btn:hover { background: #dc2626; }
+        .install-btn { background: #2563eb; display: none; }
 
-        .save-btn { background: #10b981; }
-        .save-btn:hover { background: #059669; }
-
-        .install-btn {
-            background: #2563eb;
-            display: none;
+        /* EXACT DRAWING EXPENSE TABLE STYLES */
+        .drawing-grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
         }
-        .install-btn:hover { background: #1d4ed8; }
+
+        .drawing-grid-table th, .drawing-grid-table td {
+            border: 1.5px solid #4b5563;
+            height: 22px;
+            padding: 0px 2px;
+            font-size: 10px;
+        }
+
+        .drawing-grid-table th {
+            background: #ffffff;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .drawing-grid-table input {
+            border: none;
+            width: 100%;
+            height: 100%;
+            font-size: 10px;
+            background: transparent;
+        }
+
+        .cell-yellow {
+            background-color: #ffff00 !important;
+            color: #000000;
+            font-weight: bold;
+            font-size: 11px;
+            text-align: right;
+            padding-right: 4px;
+        }
+
+        .cell-green {
+            background-color: #15803d !important;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .cell-green input {
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .cell-red {
+            background-color: #dc2626 !important;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: right;
+            padding-right: 4px;
+        }
+
+        .cell-pink {
+            background-color: #ec4899 !important;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 11px;
+            text-align: right;
+            padding-right: 4px;
+        }
 
         @media (max-width: 400px) {
-            th, td { height: 24px; padding: 1px; }
-            th { font-size: 9px; }
-            td { font-size: 9.5px; }
-            .table-box-2 table input { font-size: 9.5px; }
+            .table-box-2 th { font-size: 8.5px; }
+            .table-box-2 td { height: 16px; }
+            .table-box-2 table input { font-size: 8.5px; height: 14px; }
         }
     </style>
 </head>
@@ -406,7 +438,7 @@
         <div class="setup-modal">
             <button class="modal-close-btn" onclick="closeSetupModal()" title="Close">&times;</button>
             <h3 id="modalTitle">Start New Ledger File</h3>
-            <p id="modalSubtext" style="font-size: 12px; color: #6b7280;">Please fill out both the Date and Name to unlock encoding.</p>
+            <p id="modalSubtext" style="font-size: 11px; color: #6b7280;">Please fill out both the Date and Name to unlock encoding.</p>
             <label for="modalDateInput">Date</label>
             <input type="date" id="modalDateInput">
             <label for="modalNameInput">Route / Salesman Name</label>
@@ -550,76 +582,65 @@
             </table>
         </div>
 
-        <!-- EXPENSE & SUMMARY SLIDER SECTION -->
-<div class="history-section" style="margin-top: 15px;">
-    <div class="history-title" onclick="toggleExpenseSlider()" style="cursor: pointer;">
-        <span>📊 Expenses & Cash Summary</span>
-        <span id="sliderArrow">▼</span>
-    </div>
-    
-    <div id="expenseSliderContent" style="display: block; margin-top: 10px;">
-        <div class="table-box" style="margin-bottom: 0;">
-            <table style="font-size: 11px;">
+        <!-- EXACT DRAWING EXPENSE & SUMMARY TABLE -->
+        <div class="table-box" style="margin-bottom: 6px;">
+            <table class="drawing-grid-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">items</th>
-                        <th style="width: 20%;">amount</th>
-                        <th style="width: 25%;">items</th>
-                        <th style="width: 20%;">amount</th>
-                        <th style="width: 10%;"></th>
+                        <th style="width: 20%;">items</th>
+                        <th style="width: 18%;">amount</th>
+                        <th style="width: 20%;">items</th>
+                        <th style="width: 18%;">amount</th>
+                        <th class="cell-yellow" id="yellowTotalDisplay" style="width: 24%;">0</th>
                     </tr>
                 </thead>
-                <tbody id="expenseTableBody">
-                    <!-- Dynamic 5 Rows -->
+                <tbody>
+                    <tr>
+                        <td><input type="text" id="expItem1_0"></td>
+                        <td><input type="number" id="expAmt1_0" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td><input type="text" id="expItem2_0"></td>
+                        <td><input type="number" id="expAmt2_0" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td class="cell-green" rowspan="2">
+                            <input type="number" id="inputCOH" placeholder="COH" oninput="calculateExpensesAndSummary()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="expItem1_1"></td>
+                        <td><input type="number" id="expAmt1_1" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td><input type="text" id="expItem2_1"></td>
+                        <td><input type="number" id="expAmt2_1" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="expItem1_2"></td>
+                        <td><input type="number" id="expAmt1_2" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td><input type="text" id="expItem2_2"></td>
+                        <td><input type="number" id="expAmt2_2" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td class="cell-red" rowspan="2" id="redGrandTotalDisplay">0</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="expItem1_3"></td>
+                        <td><input type="number" id="expAmt1_3" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td><input type="text" id="expItem2_3"></td>
+                        <td><input type="number" id="expAmt2_3" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="expItem1_4"></td>
+                        <td><input type="number" id="expAmt1_4" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                        <td><input type="text" id="expItem2_4"></td>
+                        <td class="cell-pink" id="pinkTotalDisplay">0</td>
+                        <td style="background:#e5e7eb;"></td>
+                    </tr>
                 </tbody>
             </table>
-            
-            <!-- SUMMARY DISPLAY PANEL (Yellow, Green COH, Red, Pink) -->
-            <table style="margin-top: 10px; font-weight: bold; font-size: 12px; border-collapse: collapse;">
-                <tr>
-                    <td style="background-color: #fef08a; color: #854d0e; width: 40%; text-align: left; padding-left: 8px;">
-                        Yellow Total (Coll'n + Expenses)
-                    </td>
-                    <td id="yellowTotalDisplay" style="background-color: #fef08a; color: #854d0e; text-align: right; padding-right: 8px; font-size: 14px;">
-                        0
-                    </td>
-                </tr>
-                <tr>
-                    <td style="background-color: #16a34a; color: white; width: 40%; text-align: left; padding-left: 8px;">
-                        COH (Cash On Hand)
-                    </td>
-                    <td style="background-color: #16a34a; padding: 2px;">
-                        <input type="number" id="inputCOH" placeholder="Enter COH" oninput="calculateExpensesAndSummary()" style="width: 100%; text-align: right; font-weight: bold; background: white; border: none; font-size: 13px;">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="background-color: #dc2626; color: white; width: 40%; text-align: left; padding-left: 8px;">
-                        Grand Total
-                    </td>
-                    <td id="redGrandTotalDisplay" style="background-color: #dc2626; color: white; text-align: right; padding-right: 8px; font-size: 15px;">
-                        0
-                    </td>
-                </tr>
-                <tr>
-                    <td style="background-color: #f472b6; color: #831843; width: 40%; text-align: left; padding-left: 8px;">
-                        Pink (Total Expenses)
-                    </td>
-                    <td id="pinkTotalDisplay" style="background-color: #f472b6; color: #831843; text-align: right; padding-right: 8px; font-size: 14px;">
-                        0
-                    </td>
-                </tr>
-            </table>
         </div>
-    </div>
-</div>
-        
+
         <!-- 30-DAY HISTORY DRAWER -->
         <div class="history-section">
-            <div class="history-title">
-                <span>30-Day History Files</span>
-                <span id="historyCount" style="font-size: 11px; color: #6b7280;">0 / 30</span>
+            <div class="history-title" onclick="toggleHistoryDrawer()" style="cursor: pointer;">
+                <span>📂 30-Day History Files</span>
+                <span id="historyCount" style="font-size: 10px; color: #6b7280;">0 / 30 ▼</span>
             </div>
-            <div class="history-list" id="historyContainer">
+            <div class="history-list" id="historyContainer" style="display: none; margin-top: 4px;">
                 <!-- History Items Rendered Dynamically -->
             </div>
         </div>
