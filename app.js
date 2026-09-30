@@ -560,3 +560,69 @@ function loadLedger() {
     renderHistoryUI();
     resetInactivityTimer();
 }
+// 1. Render 5 Rows for Items & Amount Table
+function renderExpenseTable() {
+    const tbody = document.getElementById('expenseTableBody');
+    if (!tbody) return;
+    
+    let html = '';
+    for (let i = 0; i < 5; i++) {
+        html += `
+            <tr>
+                <td><input type="text" id="expItem1_${i}" style="width:100%; border:none; text-align:left; padding-left:4px;"></td>
+                <td><input type="number" id="expAmt1_${i}" class="exp-amount-input" oninput="calculateExpensesAndSummary()" style="width:100%; border:none; text-align:right; padding-right:4px;"></td>
+                <td><input type="text" id="expItem2_${i}" style="width:100%; border:none; text-align:left; padding-left:4px;"></td>
+                <td><input type="number" id="expAmt2_${i}" class="exp-amount-input" oninput="calculateExpensesAndSummary()" style="width:100%; border:none; text-align:right; padding-right:4px;"></td>
+                <td style="background:#e5e7eb;"></td>
+            </tr>
+        `;
+    }
+    tbody.innerHTML = html;
+}
+
+// 2. Calculation Logic for Expenses, Yellow, Green (COH), Pink, and Red
+function calculateExpensesAndSummary() {
+    let pinkSum = 0;
+    
+    // Sum of all amounts in new table
+    for (let i = 0; i < 5; i++) {
+        const amt1 = parseFloat(document.getElementById(`expAmt1_${i}`)?.value) || 0;
+        const amt2 = parseFloat(document.getElementById(`expAmt2_${i}`)?.value) || 0;
+        pinkSum += amt1 + amt2;
+    }
+    
+    // Get Coll'n Net Total from Table 2 (Total Pay Column)
+    const collnTotal = parseFloat(document.getElementById('totalColln')?.innerText) || 0;
+    
+    // Yellow = Coll'n Net Total + Pink Sum
+    const yellowTotal = collnTotal + pinkSum;
+    
+    // COH (Green)
+    const cohInput = parseFloat(document.getElementById('inputCOH')?.value) || 0;
+    
+    // Red (Grand Total) = Yellow - COH
+    const redGrandTotal = yellowTotal - cohInput;
+    
+    // Update UI Displays
+    document.getElementById('pinkTotalDisplay').innerText = pinkSum.toLocaleString();
+    document.getElementById('yellowTotalDisplay').innerText = yellowTotal.toLocaleString();
+    document.getElementById('redGrandTotalDisplay').innerText = redGrandTotal.toLocaleString();
+}
+
+// 3. Toggle Slider Open / Close
+function toggleExpenseSlider() {
+    const content = document.getElementById('expenseSliderContent');
+    const arrow = document.getElementById('sliderArrow');
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        arrow.innerText = '▼';
+    } else {
+        content.style.display = 'none';
+        arrow.innerText = '►';
+    }
+}
+
+// Automatic Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    renderExpenseTable();
+});
