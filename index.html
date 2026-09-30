@@ -583,56 +583,57 @@
         </div>
 
         <!-- EXACT DRAWING EXPENSE & SUMMARY TABLE -->
-        <div class="table-box" style="margin-bottom: 6px;">
-            <table class="drawing-grid-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">items</th>
-                        <th style="width: 18%;">amount</th>
-                        <th style="width: 20%;">items</th>
-                        <th style="width: 18%;">amount</th>
-                        <th class="cell-yellow" id="yellowTotalDisplay" style="width: 24%;">0</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" id="expItem1_0"></td>
-                        <td><input type="number" id="expAmt1_0" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td><input type="text" id="expItem2_0"></td>
-                        <td><input type="number" id="expAmt2_0" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td class="cell-green" rowspan="2">
-                            <input type="number" id="inputCOH" placeholder="COH" oninput="calculateExpensesAndSummary()">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="expItem1_1"></td>
-                        <td><input type="number" id="expAmt1_1" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td><input type="text" id="expItem2_1"></td>
-                        <td><input type="number" id="expAmt2_1" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="expItem1_2"></td>
-                        <td><input type="number" id="expAmt1_2" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td><input type="text" id="expItem2_2"></td>
-                        <td><input type="number" id="expAmt2_2" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td class="cell-red" rowspan="2" id="redGrandTotalDisplay">0</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="expItem1_3"></td>
-                        <td><input type="number" id="expAmt1_3" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td><input type="text" id="expItem2_3"></td>
-                        <td><input type="number" id="expAmt2_3" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" id="expItem1_4"></td>
-                        <td><input type="number" id="expAmt1_4" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                        <td><input type="text" id="expItem2_4"></td>
-                        <td class="cell-pink" id="pinkTotalDisplay">0</td>
-                        <td style="background:#e5e7eb;"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- PLAIN EXPENSE & SUMMARY TABLE (NO COLORS) -->
+<div class="table-box" style="margin-bottom: 6px;">
+    <table class="drawing-grid-table">
+        <thead>
+            <tr>
+                <th style="width: 20%;">items</th>
+                <th style="width: 18%;">amount</th>
+                <th style="width: 20%;">items</th>
+                <th style="width: 18%;">amount</th>
+                <th id="yellowTotalDisplay" style="width: 24%; text-align: right; font-weight: bold; padding-right: 4px;">0</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" id="expItem1_0"></td>
+                <td><input type="number" id="expAmt1_0" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td><input type="text" id="expItem2_0"></td>
+                <td><input type="number" id="expAmt2_0" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td rowspan="2" style="text-align: center; vertical-align: middle;">
+                    <input type="number" id="inputCOH" value="0" placeholder="COH" oninput="calculateExpensesAndSummary()" style="text-align: center; font-weight: bold;">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expItem1_1"></td>
+                <td><input type="number" id="expAmt1_1" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td><input type="text" id="expItem2_1"></td>
+                <td><input type="number" id="expAmt2_1" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expItem1_2"></td>
+                <td><input type="number" id="expAmt1_2" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td><input type="text" id="expItem2_2"></td>
+                <td><input type="number" id="expAmt2_2" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td rowspan="2" id="redGrandTotalDisplay" style="text-align: right; font-weight: bold; padding-right: 4px; vertical-align: middle;">0</td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expItem1_3"></td>
+                <td><input type="number" id="expAmt1_3" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td><input type="text" id="expItem2_3"></td>
+                <td><input type="number" id="expAmt2_3" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expItem1_4"></td>
+                <td><input type="number" id="expAmt1_4" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
+                <td><input type="text" id="expItem2_4"></td>
+                <td id="pinkTotalDisplay" style="text-align: right; font-weight: bold; padding-right: 4px;">0</td>
+                <td style="background:#f9fafb;"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
         <!-- 30-DAY HISTORY DRAWER -->
         <div class="history-section">
