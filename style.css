@@ -633,12 +633,16 @@ table input:focus {
             0 0 8px #00ffcc;
     }
     .note-bar {
-    width: 100%;
+    width: 160px !important;
+    max-width: 160px !important;
     margin-top: 4px;
 }
 
 #newTableNote {
+    display: block;
     width: 160px !important;
+    min-width: 0 !important;
+    max-width: 160px !important;
     box-sizing: border-box;
     padding: 6px 10px;
     border: 1px solid #ccc;
