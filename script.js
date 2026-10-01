@@ -1334,7 +1334,9 @@ function loadHistoryFile(dateKey) {
     ).textContent =
         currentSessionName;
 
-
+document.getElementById("newTableNote").value =
+    selectedFile.extraTable?.note || "";
+    
     // SECOND TABLE
     for (let i = 1; i <= 16; i++) {
 
