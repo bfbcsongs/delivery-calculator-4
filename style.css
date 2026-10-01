@@ -655,6 +655,28 @@ table input:focus {
 #newTableNote:focus {
     border-color: #107c41;
 }
+/* FORCE NOTE INPUT SIZE */
+.note-bar {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+    margin-top: 4px;
+}
+
+div#newTableNoteBar.note-bar > input#newTableNote {
+    width: 160px !important;
+    min-width: 160px !important;
+    max-width: 160px !important;
+    flex: 0 0 160px !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+}
 }
 }
 }
