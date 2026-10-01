@@ -1058,7 +1058,7 @@ function calculateExtraTable() {
 
 
     const collectionPlusExtra =
-        secondTableColln +
+        secondTableColln -
         allNewAmounts;
 
 
@@ -1071,7 +1071,7 @@ function calculateExtraTable() {
 
 
     const grandTotal =
-        collectionPlusExtra +
+        collectionPlusExtra -
         coh;
 
 
