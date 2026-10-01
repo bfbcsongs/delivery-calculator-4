@@ -638,7 +638,7 @@ table input:focus {
 }
 
 #newTableNote {
-    width: 250%;
+    width: 160px !important;
     box-sizing: border-box;
     padding: 6px 10px;
     border: 1px solid #ccc;
