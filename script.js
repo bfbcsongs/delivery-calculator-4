@@ -399,6 +399,7 @@ function clearAllLedgerInputs() {
     document.getElementById("activeCustomerDisplay").textContent =
         "Row 1";
 
+    document.getElementById("newTableNote").value = "";
 
     calculateLedgerTotals();
 
@@ -1122,7 +1123,9 @@ function saveLedger() {
 
         name: currentSessionName,
 
-        rows: {}
+        rows: {},
+
+note: document.getElementById("newTableNote").value
 
     };
 
@@ -1702,6 +1705,9 @@ function loadLedger() {
         "displayFileName"
     ).textContent =
         currentSessionName;
+
+    document.getElementById("newTableNote").value =
+    ledgerData.note || "";
 
 
     // SECOND TABLE
