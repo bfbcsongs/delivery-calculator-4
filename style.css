@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -22,7 +23,11 @@ html, body {
     flex-direction: column;
 }
 
-/* SESSION HEADER ABOVE TABLE 2 */
+
+/* ============================================================
+   SESSION HEADER
+   ============================================================ */
+
 .session-bar {
     background: #1e293b;
     color: white;
@@ -42,10 +47,17 @@ html, body {
     font-weight: bold;
 }
 
-/* MODAL STYLES */
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+
 .setup-modal-overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0,0,0,0.7);
     display: flex;
     align-items: center;
@@ -117,7 +129,11 @@ html, body {
     background: #1d4ed8;
 }
 
-/* HISTORY DRAWER */
+
+/* ============================================================
+   HISTORY
+   ============================================================ */
+
 .history-section {
     background: white;
     border: 1px solid #d1d5db;
@@ -165,6 +181,11 @@ html, body {
     border-bottom: none;
 }
 
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
 .btn-sm {
     padding: 4px 8px;
     font-size: 11px;
@@ -173,8 +194,37 @@ html, body {
     cursor: pointer;
 }
 
-.btn-edit { background: #3b82f6; color: white; }
-.btn-del { background: #ef4444; color: white; margin-left: 4px; }
+.btn-edit {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-del {
+    background: #ef4444;
+    color: white;
+    margin-left: 4px;
+}
+
+.clear-btn {
+    background: #ef4444;
+}
+
+.clear-btn:hover {
+    background: #dc2626;
+}
+
+.save-btn {
+    background: #10b981;
+}
+
+.save-btn:hover {
+    background: #059669;
+}
+
+
+/* ============================================================
+   TABLES
+   ============================================================ */
 
 .table-box {
     width: 100%;
@@ -198,7 +248,7 @@ table {
 th,
 td {
     border: 1px solid #d1d5db;
-    height: 26px; 
+    height: 26px;
     padding: 2px 4px;
     text-align: center;
     vertical-align: middle;
@@ -264,6 +314,11 @@ table input {
     color: #dc2626;
 }
 
+
+/* ============================================================
+   SECOND TABLE
+   ============================================================ */
+
 .table-box-2 td {
     padding: 1px 2px;
 }
@@ -295,7 +350,8 @@ table input {
     font-weight: bold;
 }
 
-.table-box-2 th, th.lockable-header {
+.table-box-2 th,
+th.lockable-header {
     font-size: 10px;
     padding: 2px 1px;
     cursor: pointer;
@@ -322,6 +378,11 @@ table input:focus {
     font-size: 10px;
     padding: 0 1px;
 }
+
+
+/* ============================================================
+   SYNC PANEL
+   ============================================================ */
 
 .sync-panel {
     display: grid;
@@ -376,21 +437,190 @@ table input:focus {
     cursor: pointer;
 }
 
-.clear-btn { background: #ef4444; }
-.clear-btn:hover { background: #dc2626; }
-
-.save-btn { background: #10b981; }
-.save-btn:hover { background: #059669; }
-
 .install-btn {
     background: #2563eb;
     display: none;
 }
-.install-btn:hover { background: #1d4ed8; }
+
+.install-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* ============================================================
+   THIRD TABLE
+   20% | 15% | 20% | 15% | 30%
+   ============================================================ */
+
+.table-box-3 {
+    width: 100%;
+    margin: 0 auto 5px auto;
+    border-top: none;
+}
+
+.table-box-3 table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table-box-3 th,
+.table-box-3 td {
+    height: 26px;
+    padding: 2px;
+    border: 1px solid #d1d5db;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-box-3 th {
+    background: #111827;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.table-box-3 td {
+    background: white;
+}
+
+.table-box-3 input {
+    width: 100%;
+    height: 23px;
+    padding: 2px 4px;
+    border: 1px solid #9ca3af;
+    border-radius: 3px;
+    font-size: 12px;
+    background: white;
+}
+
+.table-box-3 .extra-item-input {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.table-box-3 .extra-amount-input {
+    text-align: right;
+    padding-right: 5px;
+}
+
+
+/* ============================================================
+   THIRD TABLE SUMMARY C5
+   ============================================================ */
+
+.third-summary-cell {
+    padding: 3px !important;
+    vertical-align: middle !important;
+}
+
+.summary-label {
+    font-size: 9px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+
+/* COLL'N + AMOUNTS */
+
+.collection-summary-cell {
+    background: #eff6ff !important;
+    color: #1d4ed8;
+    font-weight: bold;
+}
+
+.collection-summary-cell > div:last-child {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* COH */
+
+.coh-cell {
+    background: #fef3c7 !important;
+}
+
+.coh-cell input {
+    width: 90% !important;
+    height: 25px !important;
+    font-size: 15px !important;
+    font-weight: bold;
+    text-align: right !important;
+}
+
+
+/* GRAND TOTAL */
+
+.grand-total-cell {
+    background: #fee2e2 !important;
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.grand-total-cell > div:last-child {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* THIRD TABLE TOTALS */
+
+.extra-total-label {
+    font-size: 9px !important;
+    font-weight: bold;
+    color: #dc2626;
+}
+
+.extra-total-amount {
+    font-size: 11px !important;
+    font-weight: bold;
+    color: #dc2626;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
 
 @media (max-width: 400px) {
-    th, td { height: 24px; padding: 1px; }
-    th { font-size: 9px; }
-    td { font-size: 9.5px; }
-    .table-box-2 table input { font-size: 9.5px; }
+
+    th,
+    td {
+        height: 24px;
+        padding: 1px;
+    }
+
+    th {
+        font-size: 9px;
+    }
+
+    td {
+        font-size: 9.5px;
+    }
+
+    .table-box-2 table input {
+        font-size: 9.5px;
+    }
+
+    .table-box-3 th {
+        font-size: 8px;
+    }
+
+    .table-box-3 input {
+        font-size: 10px;
+        height: 22px;
+    }
+
+    .collection-summary-cell > div:last-child {
+        font-size: 15px;
+    }
+
+    .grand-total-cell > div:last-child {
+        font-size: 18px;
+    }
+
+    .summary-label {
+        font-size: 8px;
+    }
+
 }
