@@ -624,16 +624,14 @@ table input:focus {
     }
 @keyframes neonPulse {
     0%, 100% {
-        text-shadow:
-            0 0 3px #00ffcc,
-            0 0 6px #00ffcc;
+        text-shadow: 0 0 3px #00ffcc;
     }
 
     50% {
         text-shadow:
             0 0 5px #00ffcc,
-            0 0 10px #00ffcc,
-            0 0 16px #00ffcc;
+            0 0 8px #00ffcc;
     }
+}
 }
 }
