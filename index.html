@@ -24,7 +24,7 @@
         }
 
         .main-wrapper {
-            padding: 6px 4px;
+            padding: 15px 10px 10px 10px;
             width: 100%;
             max-width: 650px;
             margin: 0 auto;
@@ -36,19 +36,19 @@
         .session-bar {
             background: #1e293b;
             color: white;
-            padding: 4px 8px;
+            padding: 8px 12px;
             border-radius: 4px 4px 0 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11px;
+            font-size: 13px;
             border: 1px solid #d1d5db;
             border-bottom: none;
         }
 
         .session-info {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             font-weight: bold;
         }
 
@@ -66,52 +66,55 @@
         .setup-modal {
             position: relative;
             background: white;
-            padding: 16px;
+            padding: 20px;
             border-radius: 8px;
             width: 90%;
-            max-width: 380px;
+            max-width: 400px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 8px;
-            right: 10px;
+            top: 10px;
+            right: 12px;
             background: transparent;
             border: none;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #6b7280;
             cursor: pointer;
+        }
+
+        .modal-close-btn:hover {
+            color: #111827;
         }
 
         .setup-modal h3 {
             margin-top: 0;
             color: #111827;
             padding-right: 20px;
-            font-size: 16px;
         }
 
         .setup-modal label {
             display: block;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
-            margin-top: 8px;
-            margin-bottom: 2px;
+            margin-top: 10px;
+            margin-bottom: 4px;
         }
 
         .setup-modal input {
             width: 100%;
-            padding: 6px;
+            padding: 8px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .setup-btn {
             width: 100%;
-            margin-top: 12px;
-            padding: 8px;
+            margin-top: 15px;
+            padding: 10px;
             background: #2563eb;
             color: white;
             border: none;
@@ -120,12 +123,16 @@
             cursor: pointer;
         }
 
+        .setup-btn:hover {
+            background: #1d4ed8;
+        }
+
         /* HISTORY DRAWER */
         .history-section {
             background: white;
             border: 1px solid #d1d5db;
-            margin-top: 6px;
-            padding: 6px;
+            margin-top: 10px;
+            padding: 10px;
             border-radius: 4px;
             display: flex;
             flex-direction: column;
@@ -133,16 +140,17 @@
 
         .history-title {
             font-weight: bold;
-            font-size: 12px;
+            font-size: 14px;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .history-list {
-            max-height: 100px;
+            max-height: 120px;
             overflow-y: auto;
-            font-size: 11px;
+            font-size: 12px;
             border: 1px solid #f3f4f6;
             border-radius: 4px;
             padding: 2px;
@@ -152,13 +160,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 4px;
+            padding: 6px;
             border-bottom: 1px solid #f3f4f6;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .history-item.selected-file {
+            background-color: #fef08a !important;
+            border: 1px solid #facc15;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
         }
 
         .btn-sm {
-            padding: 2px 6px;
-            font-size: 10px;
+            padding: 4px 8px;
+            font-size: 11px;
             border: none;
             border-radius: 3px;
             cursor: pointer;
@@ -169,14 +188,14 @@
 
         .table-box {
             width: 100%;
-            margin: 0 auto 10px auto;
+            margin: 0 auto 20px auto;
             background: white;
             border: 1px solid #d1d5db;
         }
 
         .table-box-2 {
             margin-top: 0;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             border-top: none;
         }
 
@@ -186,10 +205,11 @@
             table-layout: fixed;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #d1d5db;
-            height: 18px; 
-            padding: 0px 1px;
+            height: 26px; 
+            padding: 2px 4px;
             text-align: center;
             vertical-align: middle;
         }
@@ -197,18 +217,18 @@
         th {
             background: #111827;
             color: white;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: bold;
         }
 
         td {
             background: white;
-            font-size: 11px;
+            font-size: 14px;
         }
 
         .miki {
             text-align: left;
-            padding-left: 8px;
+            padding-left: 12px;
             font-weight: bold;
         }
 
@@ -221,9 +241,9 @@
             text-align: center;
             font-weight: bold;
             color: #1d4ed8;
-            font-size: 13px;
+            font-size: 15px;
             background: #eff6ff;
-            padding: 2px;
+            padding: 4px;
             border-radius: 4px;
             word-break: break-word;
         }
@@ -231,50 +251,42 @@
         table input {
             width: 100%;
             max-width: 100%;
-            height: 17px;
-            padding: 0px 2px;
+            height: 22px;
+            padding: 2px;
             border: 1px solid #9ca3af;
-            border-radius: 2px;
+            border-radius: 4px;
             text-align: center;
-            font-size: 11px;
+            font-size: 14px;
             background: white;
         }
 
         .miki-net-total-large {
-            font-size: 9px !important;
+            font-size: 10px !important;
             font-weight: bold;
             color: #dc2626;
             text-align: left;
-            padding-left: 6px;
+            padding-left: 12px;
         }
 
         .net-total-large {
-            font-size: 18px !important;
+            font-size: 25px !important;
             font-weight: bold;
             color: #dc2626;
         }
 
-        /* TABLE 2 COMPACT OPTIMIZATIONS FOR SCREENSHOT */
-        .table-box-2 th {
-            font-size: 9px;
-            padding: 1px 0px;
-        }
-
         .table-box-2 td {
-            height: 17px;
-            padding: 0px 1px;
+            padding: 1px 2px;
         }
 
         .table-box-2 table input {
-            font-size: 9.5px;
-            height: 15px;
-            padding: 0px 1px;
-            border-radius: 2px;
+            font-size: 11px;
+            height: 24px;
+            padding: 1px 2px;
         }
 
         .table-box-2 table input.name-input {
             text-align: left;
-            padding-left: 2px;
+            padding-left: 4px;
         }
 
         .table-box-2 table input.readonly-col {
@@ -293,10 +305,21 @@
             font-weight: bold;
         }
 
+        .table-box-2 th, th.lockable-header {
+            font-size: 10px;
+            padding: 2px 1px;
+            cursor: pointer;
+            user-select: none;
+        }
+
         .direct-amount-input {
             width: 100% !important;
-            height: 18px !important;
+            height: 24px !important;
             font-weight: bold;
+        }
+
+        table input:focus {
+            outline: 2px solid #94a3b8;
         }
 
         .amount {
@@ -305,129 +328,74 @@
 
         .sync-panel {
             display: grid;
-            grid-template-columns: repeat(4, 1fr) 80px;
-            gap: 4px;
-            padding: 6px;
+            grid-template-columns: repeat(4, 1fr) 90px;
+            gap: 6px;
+            padding: 10px;
             background: #111827;
             border-top: 1px solid #d1d5db;
             align-items: flex-end;
         }
 
+        .sync-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .sync-cell label {
             color: white;
-            font-size: 9px;
+            font-size: 11px;
             font-weight: bold;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            display: block;
-            text-align: center;
         }
 
         .sync-cell input {
             width: 100%;
-            height: 24px;
-            padding: 2px;
+            height: 32px;
+            padding: 4px;
             border: 1px solid #9ca3af;
-            border-radius: 3px;
+            border-radius: 4px;
             text-align: center;
-            font-size: 11px;
+            font-size: 14px;
             background: white;
         }
 
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
 
         .action-btn {
             width: 100%;
-            height: 24px;
+            height: 32px;
             color: white;
             border: none;
-            border-radius: 3px;
-            font-size: 10px;
+            border-radius: 4px;
+            font-size: 11px;
             font-weight: bold;
             cursor: pointer;
         }
 
         .clear-btn { background: #ef4444; }
-        .install-btn { background: #2563eb; display: none; }
+        .clear-btn:hover { background: #dc2626; }
 
-        /* EXACT DRAWING EXPENSE TABLE STYLES */
-        .drawing-grid-table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
+        .save-btn { background: #10b981; }
+        .save-btn:hover { background: #059669; }
 
-        .drawing-grid-table th, .drawing-grid-table td {
-            border: 1.5px solid #4b5563;
-            height: 22px;
-            padding: 0px 2px;
-            font-size: 10px;
+        .install-btn {
+            background: #2563eb;
+            display: none;
         }
-
-        .drawing-grid-table th {
-            background: #ffffff;
-            color: #000000;
-            font-weight: bold;
-        }
-
-        .drawing-grid-table input {
-            border: none;
-            width: 100%;
-            height: 100%;
-            font-size: 10px;
-            background: transparent;
-        }
-
-        .cell-yellow {
-            background-color: #ffff00 !important;
-            color: #000000;
-            font-weight: bold;
-            font-size: 11px;
-            text-align: right;
-            padding-right: 4px;
-        }
-
-        .cell-green {
-            background-color: #15803d !important;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .cell-green input {
-            color: #ffffff;
-            font-weight: bold;
-            text-align: center;
-            font-size: 12px;
-        }
-
-        .cell-red {
-            background-color: #dc2626 !important;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 12px;
-            text-align: right;
-            padding-right: 4px;
-        }
-
-        .cell-pink {
-            background-color: #ec4899 !important;
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 11px;
-            text-align: right;
-            padding-right: 4px;
-        }
+        .install-btn:hover { background: #1d4ed8; }
 
         @media (max-width: 400px) {
-            .table-box-2 th { font-size: 8.5px; }
-            .table-box-2 td { height: 16px; }
-            .table-box-2 table input { font-size: 8.5px; height: 14px; }
+            th, td { height: 24px; padding: 1px; }
+            th { font-size: 9px; }
+            td { font-size: 9.5px; }
+            .table-box-2 table input { font-size: 9.5px; }
         }
     </style>
 </head>
@@ -438,7 +406,7 @@
         <div class="setup-modal">
             <button class="modal-close-btn" onclick="closeSetupModal()" title="Close">&times;</button>
             <h3 id="modalTitle">Start New Ledger File</h3>
-            <p id="modalSubtext" style="font-size: 11px; color: #6b7280;">Please fill out both the Date and Name to unlock encoding.</p>
+            <p id="modalSubtext" style="font-size: 12px; color: #6b7280;">Please fill out both the Date and Name to unlock encoding.</p>
             <label for="modalDateInput">Date</label>
             <input type="date" id="modalDateInput">
             <label for="modalNameInput">Route / Salesman Name</label>
@@ -582,66 +550,13 @@
             </table>
         </div>
 
-        <!-- EXACT DRAWING EXPENSE & SUMMARY TABLE -->
-        <!-- PLAIN EXPENSE & SUMMARY TABLE (NO COLORS) -->
-<div class="table-box" style="margin-bottom: 6px;">
-    <table class="drawing-grid-table">
-        <thead>
-            <tr>
-                <th style="width: 20%;">items</th>
-                <th style="width: 18%;">amount</th>
-                <th style="width: 20%;">items</th>
-                <th style="width: 18%;">amount</th>
-                <th id="yellowTotalDisplay" style="width: 24%; text-align: right; font-weight: bold; padding-right: 4px;">0</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="text" id="expItem1_0"></td>
-                <td><input type="number" id="expAmt1_0" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td><input type="text" id="expItem2_0"></td>
-                <td><input type="number" id="expAmt2_0" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td rowspan="2" style="text-align: center; vertical-align: middle;">
-                    <input type="number" id="inputCOH" value="0" placeholder="COH" oninput="calculateExpensesAndSummary()" style="text-align: center; font-weight: bold;">
-                </td>
-            </tr>
-            <tr>
-                <td><input type="text" id="expItem1_1"></td>
-                <td><input type="number" id="expAmt1_1" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td><input type="text" id="expItem2_1"></td>
-                <td><input type="number" id="expAmt2_1" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-            </tr>
-            <tr>
-                <td><input type="text" id="expItem1_2"></td>
-                <td><input type="number" id="expAmt1_2" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td><input type="text" id="expItem2_2"></td>
-                <td><input type="number" id="expAmt2_2" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td rowspan="2" id="redGrandTotalDisplay" style="text-align: right; font-weight: bold; padding-right: 4px; vertical-align: middle;">0</td>
-            </tr>
-            <tr>
-                <td><input type="text" id="expItem1_3"></td>
-                <td><input type="number" id="expAmt1_3" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td><input type="text" id="expItem2_3"></td>
-                <td><input type="number" id="expAmt2_3" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-            </tr>
-            <tr>
-                <td><input type="text" id="expItem1_4"></td>
-                <td><input type="number" id="expAmt1_4" class="expense-amount-input" oninput="calculateExpensesAndSummary()" style="text-align:right;"></td>
-                <td><input type="text" id="expItem2_4"></td>
-                <td id="pinkTotalDisplay" style="text-align: right; font-weight: bold; padding-right: 4px;">0</td>
-                <td style="background:#f9fafb;"></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
         <!-- 30-DAY HISTORY DRAWER -->
         <div class="history-section">
-            <div class="history-title" onclick="toggleHistoryDrawer()" style="cursor: pointer;">
-                <span>📂 30-Day History Files</span>
-                <span id="historyCount" style="font-size: 10px; color: #6b7280;">0 / 30 ▼</span>
+            <div class="history-title">
+                <span>30-Day History Files</span>
+                <span id="historyCount" style="font-size: 11px; color: #6b7280;">0 / 30</span>
             </div>
-            <div class="history-list" id="historyContainer" style="display: none; margin-top: 4px;">
+            <div class="history-list" id="historyContainer">
                 <!-- History Items Rendered Dynamically -->
             </div>
         </div>
