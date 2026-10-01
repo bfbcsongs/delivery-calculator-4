@@ -1182,36 +1182,32 @@ note: document.getElementById("newTableNote").value
 
 
     // THIRD TABLE
-    ledgerData.extraTable = {};
+ledgerData.extraTable = {
+
+    note: document.getElementById("newTableNote").value
+
+};
 
 
-    for (let i = 1; i <= 8; i++) {
+for (let i = 1; i <= 8; i++) {
 
-        ledgerData.extraTable[`item_${i}`] =
-            document.getElementById(
-                `extraItem_${i}`
-            ).value;
-
-        ledgerData.extraTable[`amount_${i}`] =
-            document.getElementById(
-                `extraAmount_${i}`
-            ).value;
-
-    }
-
-
-    ledgerData.extraTable.coh =
+    ledgerData.extraTable[`item_${i}`] =
         document.getElementById(
-            "inputCOH"
+            `extraItem_${i}`
         ).value;
 
-
-    localStorage.setItem(
-        "miki_ledger_data",
-        JSON.stringify(ledgerData)
-    );
+    ledgerData.extraTable[`amount_${i}`] =
+        document.getElementById(
+            `extraAmount_${i}`
+        ).value;
 
 }
+
+
+ledgerData.extraTable.coh =
+    document.getElementById(
+        "inputCOH"
+    ).value;
 
 
 // ============================================================
@@ -1484,7 +1480,8 @@ function loadHistoryFile(dateKey) {
                 selectedFile.extraTable.coh;
 
         }
-
+document.getElementById("newTableNote").value =
+    selectedFile.note || "";
     }
 
 
