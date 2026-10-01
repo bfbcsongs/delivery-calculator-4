@@ -632,6 +632,25 @@ table input:focus {
             0 0 5px #00ffcc,
             0 0 8px #00ffcc;
     }
+    .note-bar {
+    width: 100%;
+    margin-top: 4px;
+}
+
+#newTableNote {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+}
+
+#newTableNote:focus {
+    border-color: #107c41;
+}
 }
 }
 }
