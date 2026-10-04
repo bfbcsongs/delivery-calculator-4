@@ -29,9 +29,13 @@ body {
    ============================================================ */
 
 .session-bar {
+    position: relative;
+
     background: #1e293b;
     color: white;
+
     padding: 8px 12px;
+
     border-radius: 4px 4px 0 0;
 
     display: flex;
@@ -48,8 +52,45 @@ body {
     border: 1px solid #d1d5db;
     border-bottom: none;
 
-    overflow: visible;
+    overflow: hidden;
+
+    min-height: 58px;
 }
+
+
+/* ============================================================
+   LARGE CENTER WATERMARK
+   ============================================================ */
+
+.date-watermark {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 76px;
+    line-height: 0.8;
+
+    font-weight: 900;
+
+    color: rgba(255, 255, 255, 0.11);
+
+    letter-spacing: -4px;
+
+    z-index: 0;
+
+    pointer-events: none;
+    user-select: none;
+
+    white-space: nowrap;
+}
+
+
+/* ============================================================
+   SESSION INFO
+   ============================================================ */
 
 .session-info {
     position: relative;
@@ -65,33 +106,8 @@ body {
     font-weight: bold;
 
     overflow: hidden;
-}
 
-
-/* ============================================================
-   DATE WATERMARK
-   Large Day Number Behind Date
-   ============================================================ */
-
-.date-watermark {
-    position: absolute;
-    left: 0;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    font-size: 52px;
-    line-height: 1;
-    font-weight: 900;
-
-    color: rgba(255, 255, 255, 0.13);
-
-    z-index: 0;
-
-    pointer-events: none;
-    user-select: none;
-
-    letter-spacing: -2px;
+    z-index: 1;
 }
 
 
@@ -101,12 +117,15 @@ body {
 
 .date-foreground {
     position: relative;
-    z-index: 1;
+
+    z-index: 2;
 
     display: flex;
+
     flex-direction: column;
 
     justify-content: center;
+
     align-items: flex-start;
 
     line-height: 1.15;
@@ -116,12 +135,15 @@ body {
 
 #displayFileDate {
     font-size: 12px;
+
     font-weight: 900;
+
     white-space: nowrap;
 }
 
 .weekday-display {
     font-size: 10px;
+
     font-weight: 900;
 
     letter-spacing: 0.5px;
@@ -137,6 +159,7 @@ body {
 
 #displayFileName {
     font-size: 11px;
+
     font-weight: 700;
 
     white-space: nowrap;
@@ -144,6 +167,7 @@ body {
     max-width: 150px;
 
     overflow: hidden;
+
     text-overflow: ellipsis;
 }
 
@@ -155,9 +179,10 @@ body {
 .session-actions {
     position: relative;
 
-    z-index: 10;
+    z-index: 5;
 
     display: flex;
+
     align-items: center;
 
     gap: 4px;
@@ -174,6 +199,7 @@ body {
 
 .setup-modal-overlay {
     position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
@@ -182,6 +208,7 @@ body {
     background: rgba(0,0,0,0.7);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -198,6 +225,7 @@ body {
     border-radius: 8px;
 
     width: 90%;
+
     max-width: 400px;
 
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -210,9 +238,11 @@ body {
     right: 12px;
 
     background: transparent;
+
     border: none;
 
     font-size: 20px;
+
     font-weight: bold;
 
     color: #6b7280;
@@ -236,9 +266,11 @@ body {
     display: block;
 
     font-size: 12px;
+
     font-weight: bold;
 
     margin-top: 10px;
+
     margin-bottom: 4px;
 }
 
@@ -248,6 +280,7 @@ body {
     padding: 8px;
 
     border: 1px solid #d1d5db;
+
     border-radius: 4px;
 
     font-size: 14px;
@@ -261,9 +294,11 @@ body {
     padding: 10px;
 
     background: #2563eb;
+
     color: white;
 
     border: none;
+
     border-radius: 4px;
 
     font-weight: bold;
@@ -292,6 +327,7 @@ body {
     border-radius: 4px;
 
     display: flex;
+
     flex-direction: column;
 }
 
@@ -303,7 +339,9 @@ body {
     margin-bottom: 8px;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
@@ -325,7 +363,10 @@ body {
     display: flex;
 
     justify-content: space-between;
+
     align-items: center;
+
+    gap: 5px;
 
     padding: 6px;
 
@@ -334,6 +375,18 @@ body {
     border-radius: 4px;
 
     transition: background-color 0.2s ease;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+.history-item:hover {
+    background-color: #f9fafb;
+}
+
+.history-item:active {
+    background-color: #e5e7eb;
 }
 
 .history-item.selected-file {
@@ -344,6 +397,26 @@ body {
 
 .history-item:last-child {
     border-bottom: none;
+}
+
+.history-file-info {
+    flex: 1;
+
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+.history-file-info strong {
+    white-space: nowrap;
+}
+
+.history-file-actions {
+    display: flex;
+
+    align-items: center;
+
+    flex-shrink: 0;
 }
 
 
@@ -357,6 +430,7 @@ body {
     font-size: 11px;
 
     border: none;
+
     border-radius: 3px;
 
     cursor: pointer;
@@ -364,11 +438,13 @@ body {
 
 .btn-edit {
     background: #3b82f6;
+
     color: white;
 }
 
 .btn-del {
     background: #ef4444;
+
     color: white;
 
     margin-left: 4px;
@@ -376,6 +452,8 @@ body {
 
 .clear-btn {
     background: #ef4444;
+
+    color: white;
 }
 
 .clear-btn:hover {
@@ -384,6 +462,8 @@ body {
 
 .save-btn {
     background: #10b981;
+
+    color: white;
 }
 
 .save-btn:hover {
@@ -407,6 +487,7 @@ body {
 
 .table-box-2 {
     margin-top: 0;
+
     margin-bottom: 5px;
 
     border-top: none;
@@ -429,6 +510,7 @@ td {
     padding: 2px 4px;
 
     text-align: center;
+
     vertical-align: middle;
 }
 
@@ -627,6 +709,7 @@ table input:focus {
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 }
 
@@ -699,7 +782,6 @@ table input:focus {
 
 /* ============================================================
    THIRD TABLE
-   20% | 15% | 20% | 15% | 30%
    ============================================================ */
 
 .table-box-3 {
@@ -773,7 +855,7 @@ table input:focus {
 
 
 /* ============================================================
-   THIRD TABLE SUMMARY C5
+   THIRD TABLE SUMMARY
    ============================================================ */
 
 .third-summary-cell {
@@ -790,11 +872,6 @@ table input:focus {
     margin-bottom: 2px;
 }
 
-
-/* ============================================================
-   COLLECTION + AMOUNTS
-   ============================================================ */
-
 .collection-summary-cell {
     background: #eff6ff !important;
 
@@ -808,11 +885,6 @@ table input:focus {
 
     font-weight: bold;
 }
-
-
-/* ============================================================
-   COH
-   ============================================================ */
 
 .coh-cell {
     background: #fef3c7 !important;
@@ -830,11 +902,6 @@ table input:focus {
     text-align: right !important;
 }
 
-
-/* ============================================================
-   GRAND TOTAL
-   ============================================================ */
-
 .grand-total-cell {
     background: #fee2e2 !important;
 
@@ -848,11 +915,6 @@ table input:focus {
 
     font-weight: bold;
 }
-
-
-/* ============================================================
-   THIRD TABLE TOTALS
-   ============================================================ */
 
 .extra-total-label {
     font-size: 9px !important;
@@ -872,17 +934,138 @@ table input:focus {
 
 
 /* ============================================================
+   READ ONLY PREVIEW
+   ============================================================ */
+
+.readonly-preview-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(17, 24, 39, 0.92);
+
+    z-index: 10000;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    padding: 10px;
+}
+
+.readonly-preview-header {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto 8px auto;
+
+    background: #111827;
+
+    color: white;
+
+    border-radius: 5px;
+
+    padding: 9px 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    border: 1px solid #374151;
+}
+
+.readonly-preview-title {
+    font-size: 13px;
+
+    font-weight: 900;
+
+    min-width: 0;
+}
+
+.readonly-preview-subtitle {
+    font-size: 10px;
+
+    color: #cbd5e1;
+
+    margin-top: 2px;
+}
+
+.readonly-preview-close {
+    flex-shrink: 0;
+
+    background: #374151;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+    padding: 5px 8px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.readonly-preview-content {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    background: #f3f4f6;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.readonly-preview-content .table-box {
+    margin-bottom: 8px;
+}
+
+.readonly-preview-content input {
+    pointer-events: none !important;
+
+    user-select: none !important;
+
+    background: #f9fafb !important;
+}
+
+
+/* ============================================================
    MOBILE
    ============================================================ */
 
 @media (max-width: 400px) {
 
-    /* SESSION HEADER */
-
     .session-bar {
         padding: 7px 8px;
 
         gap: 4px;
+
+        min-height: 54px;
+    }
+
+    .date-watermark {
+        font-size: 58px;
+
+        letter-spacing: -3px;
     }
 
     .session-info {
@@ -891,12 +1074,6 @@ table input:focus {
         flex: 1 1 auto;
 
         min-width: 0;
-    }
-
-    .date-watermark {
-        font-size: 48px;
-
-        left: 0;
     }
 
     #displayFileDate {
@@ -926,9 +1103,6 @@ table input:focus {
 
         font-size: 10px;
     }
-
-
-    /* TABLES */
 
     th,
     td {
@@ -971,8 +1145,19 @@ table input:focus {
         font-size: 8px;
     }
 
+    .history-item {
+        padding: 7px 5px;
+    }
 
-    /* NOTE */
+    .history-file-info {
+        font-size: 11px;
+    }
+
+    .history-file-actions .btn-sm {
+        padding: 4px 5px;
+
+        font-size: 9px;
+    }
 
     .note-bar {
         width: 160px !important;
@@ -1012,9 +1197,6 @@ table input:focus {
         border-color: #107c41;
     }
 
-
-    /* FORCE NOTE INPUT SIZE */
-
     div#newTableNoteBar.note-bar > input#newTableNote {
         width: 160px !important;
 
@@ -1039,6 +1221,30 @@ table input:focus {
         font-weight: 600;
 
         outline: none;
+    }
+
+    .readonly-preview-overlay {
+        padding: 6px;
+    }
+
+    .readonly-preview-header {
+        padding: 8px;
+
+        margin-bottom: 6px;
+    }
+
+    .readonly-preview-title {
+        font-size: 11px;
+    }
+
+    .readonly-preview-subtitle {
+        font-size: 9px;
+    }
+
+    .readonly-preview-close {
+        font-size: 9px;
+
+        padding: 5px 6px;
     }
 }
 
