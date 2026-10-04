@@ -14,7 +14,6 @@
 
 <!-- DYNAMIC SETUP / CONFIRMATION MODAL -->
 <div id="setupModal" class="setup-modal-overlay">
-
     <div class="setup-modal">
 
         <button class="modal-close-btn"
@@ -54,7 +53,6 @@
         </button>
 
     </div>
-
 </div>
 
 
@@ -247,7 +245,6 @@
                     </td>
 
                     <td></td>
-
                     <td></td>
 
                     <td class="amount"
@@ -306,19 +303,19 @@
                 <tr>
 
                     <td style="
-                        font-size: 10px;
-                        font-weight: 900;
-                        color: #008cff;
-                        text-align: center;
+                        font-size:10px;
+                        font-weight:900;
+                        color:#008cff;
+                        text-align:center;
                     ">
                         Proverbs 11:3
                     </td>
 
                     <td style="
-                        font-size: 10px;
-                        font-weight: 900;
-                        color: #008cff;
-                        text-align: center;
+                        font-size:10px;
+                        font-weight:900;
+                        color:#008cff;
+                        text-align:center;
                     ">
                         Luke 16:10
                     </td>
@@ -426,6 +423,7 @@
     </div>
 
 
+
     <!-- =========================================================
          ACTIVE FILE BAR
          ========================================================= -->
@@ -434,15 +432,10 @@
 
         <div class="session-info">
 
-            <!-- LARGE DAY WATERMARK -->
-
             <div class="date-watermark"
                  id="dateWatermark">
                 --
             </div>
-
-
-            <!-- FOREGROUND DATE INFORMATION -->
 
             <div class="date-foreground">
 
@@ -464,8 +457,6 @@
         </div>
 
 
-        <!-- SAVE / NEW DAY BUTTONS -->
-
         <div class="session-actions">
 
             <button class="btn-sm save-btn"
@@ -483,6 +474,7 @@
     </div>
 
 
+
     <!-- =========================================================
          SECOND TABLE
          ========================================================= -->
@@ -492,7 +484,6 @@
         <table>
 
             <colgroup>
-
                 <col style="width:12%;">
                 <col style="width:8%;">
                 <col style="width:8%;">
@@ -502,7 +493,6 @@
                 <col style="width:15%;">
                 <col style="width:15%;">
                 <col style="width:13%;">
-
             </colgroup>
 
 
@@ -674,7 +664,11 @@
                 <tr>
 
                     <td class="miki"
-                        style="color:#dc2626;font-size:9px;padding:0 1px;">
+                        style="
+                            color:#dc2626;
+                            font-size:9px;
+                            padding:0 1px;
+                        ">
                         NET TOTAL
                     </td>
 
@@ -727,10 +721,9 @@
     </div>
 
 
+
     <!-- =========================================================
          THIRD TABLE
-         6 ROWS x 5 COLUMNS
-         20% | 15% | 20% | 15% | 30%
          ========================================================= -->
 
     <div class="table-box table-box-3">
@@ -738,13 +731,11 @@
         <table>
 
             <colgroup>
-
                 <col style="width:20%;">
                 <col style="width:15%;">
                 <col style="width:20%;">
                 <col style="width:15%;">
                 <col style="width:30%;">
-
             </colgroup>
 
 
@@ -771,9 +762,6 @@
                         AMOUNT
                     </th>
 
-
-                    <!-- C5 ROW 1-2 -->
-
                     <td rowspan="2"
                         class="third-summary-cell collection-summary-cell">
 
@@ -788,6 +776,7 @@
                     </td>
 
                 </tr>
+
 
 
                 <!-- ROW 2 -->
@@ -841,6 +830,7 @@
                 </tr>
 
 
+
                 <!-- ROW 3 -->
 
                 <tr>
@@ -889,9 +879,6 @@
 
                     </td>
 
-
-                    <!-- C5 ROW 3-4 -->
-
                     <td rowspan="2"
                         class="third-summary-cell coh-cell">
 
@@ -910,6 +897,7 @@
                     </td>
 
                 </tr>
+
 
 
                 <!-- ROW 4 -->
@@ -963,6 +951,7 @@
                 </tr>
 
 
+
                 <!-- ROW 5 -->
 
                 <tr>
@@ -1011,9 +1000,6 @@
 
                     </td>
 
-
-                    <!-- C5 ROW 5-6 -->
-
                     <td rowspan="2"
                         class="third-summary-cell grand-total-cell">
 
@@ -1028,6 +1014,7 @@
                     </td>
 
                 </tr>
+
 
 
                 <!-- ROW 6 -->
@@ -1062,6 +1049,7 @@
     </div>
 
 
+
     <!-- =========================================================
          NOTE BAR
          ========================================================= -->
@@ -1069,13 +1057,15 @@
     <div id="newTableNoteBar"
          class="note-bar">
 
-        <input type="text"
-               id="newTableNote"
-               placeholder="NOTE"
-               autocomplete="off"
-               oninput="saveLedger();">
+        <input
+            type="text"
+            id="newTableNote"
+            placeholder="NOTE"
+            autocomplete="off"
+            oninput="saveLedger();">
 
     </div>
+
 
 
     <!-- =========================================================
@@ -1092,7 +1082,11 @@
             </span>
 
             <span id="historyCount"
-                  style="font-weight:normal;color:#6b7280;font-size:11px;">
+                  style="
+                      font-weight:normal;
+                      color:#6b7280;
+                      font-size:11px;
+                  ">
                 0 / 30
             </span>
 
@@ -1102,7 +1096,11 @@
         <div class="history-list"
              id="historyContainer">
 
-            <p style="color:#9ca3af;text-align:center;margin:10px 0;">
+            <p style="
+                color:#9ca3af;
+                text-align:center;
+                margin:10px 0;
+            ">
                 No saved files yet.
             </p>
 
