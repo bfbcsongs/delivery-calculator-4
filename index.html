@@ -306,27 +306,24 @@
     <!-- =========================================================
          ACTIVE FILE BAR
          ========================================================= -->
-    <div class="session-bar">
+    <div class="session-info">
 
-        <div class="session-info">
-            <span id="displayFileDate">Date: --</span>
-            <span>|</span>
-            <span id="displayFileName">--</span>
-        </div>
+    <div class="date-watermark" id="dateWatermark">--</div>
 
-        <div>
-            <button class="btn-sm save-btn"
-                    onclick="openSaveConfirmationModal()">
-                Save Day
-            </button>
+    <div class="date-foreground">
 
-            <button class="btn-sm clear-btn"
-                    onclick="promptNewFile()">
-                New Day
-            </button>
-        </div>
+        <span id="displayFileDate">Date: --</span>
+
+        <span class="weekday-display"
+              id="displayFileDay">---</span>
+
+        <span class="session-divider">|</span>
+
+        <span id="displayFileName">--</span>
 
     </div>
+
+</div>
 
 
     <!-- =========================================================
