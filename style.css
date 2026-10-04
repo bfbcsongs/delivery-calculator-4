@@ -42,9 +42,85 @@ body {
 }
 
 .session-info {
+    position: relative;
+    min-width: 0;
+    min-height: 42px;
     display: flex;
-    gap: 8px;
+    align-items: center;
     font-weight: bold;
+    overflow: hidden;
+}
+
+/* ============================================================
+   DATE WATERMARK
+   Large Day Number Behind Date
+   ============================================================ */
+
+.date-watermark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-size: 52px;
+    line-height: 1;
+    font-weight: 900;
+
+    color: rgba(255, 255, 255, 0.13);
+
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ============================================================
+   DATE FOREGROUND
+   ============================================================ */
+
+.date-foreground {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    line-height: 1.15;
+    min-width: 0;
+}
+
+#displayFileDate {
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.weekday-display {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #cbd5e1;
+}
+
+.session-divider {
+    display: none;
+}
+
+#displayFileName {
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Keep the Save / New Day buttons from being affected */
+.session-bar > div:last-child {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
 }
 
 
@@ -584,6 +660,26 @@ table input:focus {
 
 @media (max-width: 400px) {
 
+        .session-info {
+        min-height: 40px;
+    }
+
+    .date-watermark {
+        font-size: 48px;
+    }
+
+    #displayFileDate {
+        font-size: 11px;
+    }
+
+    .weekday-display {
+        font-size: 9px;
+    }
+
+    #displayFileName {
+        font-size: 10px;
+        max-width: 110px;
+    }
     th,
     td {
         height: 24px;
