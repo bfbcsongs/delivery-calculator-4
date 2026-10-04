@@ -29,167 +29,87 @@ body {
    ============================================================ */
 
 .session-bar {
-    position: relative;
-
     background: #1e293b;
     color: white;
-
     padding: 8px 12px;
-
     border-radius: 4px 4px 0 0;
-
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
+    align-items: center;
     gap: 6px;
-
-    width: 100%;
-    box-sizing: border-box;
-
     font-size: 13px;
-
     border: 1px solid #d1d5db;
     border-bottom: none;
-
-    overflow: hidden;
-
-    min-height: 58px;
+    overflow: visible;
 }
-
-
-/* ============================================================
-   LARGE CENTER WATERMARK
-   ============================================================ */
-
-.date-watermark {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    font-size: 76px;
-    line-height: 0.8;
-
-    font-weight: 900;
-
-    color: rgba(255, 255, 255, 0.11);
-
-    letter-spacing: -4px;
-
-    z-index: 0;
-
-    pointer-events: none;
-    user-select: none;
-
-    white-space: nowrap;
-}
-
-
-/* ============================================================
-   SESSION INFO
-   ============================================================ */
 
 .session-info {
     position: relative;
-
     min-width: 0;
     min-height: 42px;
-
     flex: 1 1 auto;
-
     display: flex;
     align-items: center;
-
     font-weight: bold;
-
     overflow: hidden;
-
-    z-index: 1;
 }
 
-
-/* ============================================================
-   DATE FOREGROUND
-   ============================================================ */
+.date-watermark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 52px;
+    line-height: 1;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.13);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -2px;
+}
 
 .date-foreground {
     position: relative;
-
-    z-index: 2;
-
+    z-index: 1;
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: flex-start;
-
     line-height: 1.15;
-
     min-width: 0;
 }
 
 #displayFileDate {
     font-size: 12px;
-
     font-weight: 900;
-
     white-space: nowrap;
 }
 
 .weekday-display {
     font-size: 10px;
-
     font-weight: 900;
-
     letter-spacing: 0.5px;
-
     color: #cbd5e1;
-
     line-height: 1;
-}
-
-.session-divider {
-    display: none;
 }
 
 #displayFileName {
     font-size: 11px;
-
     font-weight: 700;
-
     white-space: nowrap;
-
     max-width: 150px;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
 }
 
-
-/* ============================================================
-   SAVE / NEW DAY BUTTONS
-   ============================================================ */
-
 .session-actions {
     position: relative;
-
-    z-index: 5;
-
+    z-index: 2;
     display: flex;
-
     align-items: center;
-
     gap: 4px;
-
     flex-shrink: 0;
-
-    white-space: nowrap;
 }
 
 
@@ -199,54 +119,36 @@ body {
 
 .setup-modal-overlay {
     position: fixed;
-
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-
     background: rgba(0,0,0,0.7);
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     z-index: 9999;
 }
 
 .setup-modal {
     position: relative;
-
     background: white;
-
     padding: 20px;
-
     border-radius: 8px;
-
     width: 90%;
-
     max-width: 400px;
-
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .modal-close-btn {
     position: absolute;
-
     top: 10px;
     right: 12px;
-
     background: transparent;
-
     border: none;
-
     font-size: 20px;
-
     font-weight: bold;
-
     color: #6b7280;
-
     cursor: pointer;
 }
 
@@ -256,53 +158,35 @@ body {
 
 .setup-modal h3 {
     margin-top: 0;
-
     color: #111827;
-
     padding-right: 20px;
 }
 
 .setup-modal label {
     display: block;
-
     font-size: 12px;
-
     font-weight: bold;
-
     margin-top: 10px;
-
     margin-bottom: 4px;
 }
 
 .setup-modal input {
     width: 100%;
-
     padding: 8px;
-
     border: 1px solid #d1d5db;
-
     border-radius: 4px;
-
     font-size: 14px;
 }
 
 .setup-btn {
     width: 100%;
-
     margin-top: 15px;
-
     padding: 10px;
-
     background: #2563eb;
-
     color: white;
-
     border: none;
-
     border-radius: 4px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
@@ -317,106 +201,58 @@ body {
 
 .history-section {
     background: white;
-
     border: 1px solid #d1d5db;
-
     margin-top: 10px;
-
     padding: 10px;
-
     border-radius: 4px;
-
     display: flex;
-
     flex-direction: column;
 }
 
 .history-title {
     font-weight: bold;
-
     font-size: 14px;
-
     margin-bottom: 8px;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
 .history-list {
     max-height: 120px;
-
     overflow-y: auto;
-
     font-size: 12px;
-
     border: 1px solid #f3f4f6;
-
     border-radius: 4px;
-
     padding: 2px;
 }
 
 .history-item {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    gap: 5px;
-
     padding: 6px;
-
     border-bottom: 1px solid #f3f4f6;
-
     border-radius: 4px;
-
     transition: background-color 0.2s ease;
-
     cursor: pointer;
-
-    user-select: none;
 }
 
 .history-item:hover {
     background-color: #f9fafb;
 }
 
-.history-item:active {
-    background-color: #e5e7eb;
-}
-
 .history-item.selected-file {
     background-color: #fef08a !important;
-
     border: 1px solid #facc15;
+}
+
+.history-item.preview-file {
+    box-shadow: inset 4px 0 0 #2563eb;
 }
 
 .history-item:last-child {
     border-bottom: none;
-}
-
-.history-file-info {
-    flex: 1;
-
-    min-width: 0;
-
-    overflow: hidden;
-}
-
-.history-file-info strong {
-    white-space: nowrap;
-}
-
-.history-file-actions {
-    display: flex;
-
-    align-items: center;
-
-    flex-shrink: 0;
 }
 
 
@@ -426,33 +262,25 @@ body {
 
 .btn-sm {
     padding: 4px 8px;
-
     font-size: 11px;
-
     border: none;
-
     border-radius: 3px;
-
     cursor: pointer;
 }
 
 .btn-edit {
     background: #3b82f6;
-
     color: white;
 }
 
 .btn-del {
     background: #ef4444;
-
     color: white;
-
     margin-left: 4px;
 }
 
 .clear-btn {
     background: #ef4444;
-
     color: white;
 }
 
@@ -462,7 +290,6 @@ body {
 
 .save-btn {
     background: #10b981;
-
     color: white;
 }
 
@@ -477,128 +304,89 @@ body {
 
 .table-box {
     width: 100%;
-
     margin: 0 auto 20px auto;
-
     background: white;
-
     border: 1px solid #d1d5db;
 }
 
 .table-box-2 {
     margin-top: 0;
-
     margin-bottom: 5px;
-
     border-top: none;
 }
 
 table {
     width: 100%;
-
     border-collapse: collapse;
-
     table-layout: fixed;
 }
 
 th,
 td {
     border: 1px solid #d1d5db;
-
     height: 26px;
-
     padding: 2px 4px;
-
     text-align: center;
-
     vertical-align: middle;
 }
 
 th {
     background: #111827;
-
     color: white;
-
     font-size: 13px;
-
     font-weight: bold;
 }
 
 td {
     background: white;
-
     font-size: 14px;
 }
 
 .miki {
     text-align: left;
-
     padding-left: 12px;
-
     font-weight: bold;
 }
 
 .label-cell {
     font-weight: bold;
-
     text-align: center;
 }
 
 .active-customer-box {
     text-align: center;
-
     font-weight: bold;
-
     color: #1d4ed8;
-
     font-size: 15px;
-
     background: #eff6ff;
-
     padding: 4px;
-
     border-radius: 4px;
-
     word-break: break-word;
 }
 
 table input {
     width: 100%;
-
     max-width: 100%;
-
     height: 22px;
-
     padding: 2px;
-
     border: 1px solid #9ca3af;
-
     border-radius: 4px;
-
     text-align: center;
-
     font-size: 14px;
-
     background: white;
 }
 
 .miki-net-total-large {
     font-size: 10px !important;
-
     font-weight: bold;
-
     color: #dc2626;
-
     text-align: left;
-
     padding-left: 12px;
 }
 
 .net-total-large {
     font-size: 25px !important;
-
     font-weight: bold;
-
     color: #dc2626;
 }
 
@@ -613,54 +401,42 @@ table input {
 
 .table-box-2 table input {
     font-size: 11px;
-
     height: 24px;
-
     padding: 1px 2px;
 }
 
 .table-box-2 table input.name-input {
     text-align: left;
-
     padding-left: 4px;
 }
 
 .table-box-2 table input.readonly-col {
     background: #f9fafb;
-
     border: none;
 }
 
 .colln-header {
     background: #f59e0b !important;
-
     color: #000000 !important;
 }
 
 .table-box-2 table input.colln-input {
     background: #fef3c7 !important;
-
     border: 1px solid #f59e0b !important;
-
     font-weight: bold;
 }
 
 .table-box-2 th,
 th.lockable-header {
     font-size: 10px;
-
     padding: 2px 1px;
-
     cursor: pointer;
-
     user-select: none;
 }
 
 .direct-amount-input {
     width: 100% !important;
-
     height: 24px !important;
-
     font-weight: bold;
 }
 
@@ -674,12 +450,26 @@ table input:focus {
 
 .net-total-red {
     font-weight: bold;
-
     color: #dc2626;
-
     font-size: 10px;
-
     padding: 0 1px;
+}
+
+
+/* ============================================================
+   READ-ONLY PREVIEW
+   ============================================================ */
+
+body.preview-mode .main-wrapper input {
+    cursor: default;
+}
+
+body.preview-mode .main-wrapper input:not(.price-input) {
+    pointer-events: none;
+}
+
+body.preview-mode .session-bar {
+    box-shadow: inset 0 -2px 0 #2563eb;
 }
 
 
@@ -689,89 +479,59 @@ table input:focus {
 
 .sync-panel {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr) 90px;
-
     gap: 6px;
-
     padding: 10px;
-
     background: #111827;
-
     border-top: 1px solid #d1d5db;
-
     align-items: flex-end;
 }
 
 .sync-cell {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
 }
 
 .sync-cell label {
     color: white;
-
     font-size: 11px;
-
     font-weight: bold;
-
     margin-bottom: 4px;
-
     text-transform: uppercase;
 }
 
 .sync-cell input {
     width: 100%;
-
     height: 32px;
-
     padding: 4px;
-
     border: 1px solid #9ca3af;
-
     border-radius: 4px;
-
     text-align: center;
-
     font-size: 14px;
-
     background: white;
 }
 
 .btn-container {
     display: flex;
-
     flex-direction: column;
-
     gap: 4px;
 }
 
 .action-btn {
     width: 100%;
-
     height: 32px;
-
     color: white;
-
     border: none;
-
     border-radius: 4px;
-
     font-size: 11px;
-
     font-weight: bold;
-
     cursor: pointer;
 }
 
 .install-btn {
     background: #2563eb;
-
     display: none;
 }
 
@@ -786,38 +546,28 @@ table input:focus {
 
 .table-box-3 {
     width: 100%;
-
     margin: 0 auto 5px auto;
-
     border-top: none;
 }
 
 .table-box-3 table {
     width: 100%;
-
     table-layout: fixed;
 }
 
 .table-box-3 th,
 .table-box-3 td {
     height: 26px;
-
     padding: 2px;
-
     border: 1px solid #d1d5db;
-
     text-align: center;
-
     vertical-align: middle;
 }
 
 .table-box-3 th {
     background: #111827;
-
     color: white;
-
     font-size: 10px;
-
     font-weight: bold;
 }
 
@@ -827,64 +577,56 @@ table input:focus {
 
 .table-box-3 input {
     width: 100%;
-
     height: 23px;
-
     padding: 2px 4px;
-
     border: 1px solid #9ca3af;
-
     border-radius: 3px;
-
     font-size: 12px;
-
     background: white;
 }
 
 .table-box-3 .extra-item-input {
     text-align: left;
-
     padding-left: 5px;
 }
 
 .table-box-3 .extra-amount-input {
     text-align: right;
-
     padding-right: 5px;
 }
 
 
 /* ============================================================
-   THIRD TABLE SUMMARY
+   THIRD TABLE SUMMARY C5
    ============================================================ */
 
 .third-summary-cell {
     padding: 3px !important;
-
     vertical-align: middle !important;
 }
 
 .summary-label {
     font-size: 9px;
-
     font-weight: bold;
-
     margin-bottom: 2px;
 }
 
+
+/* COLLECTION + AMOUNTS */
+
 .collection-summary-cell {
     background: #eff6ff !important;
-
     color: #1d4ed8;
-
     font-weight: bold;
 }
 
 .collection-summary-cell > div:last-child {
     font-size: 18px;
-
     font-weight: bold;
 }
+
+
+/* COH */
 
 .coh-cell {
     background: #fef3c7 !important;
@@ -892,159 +634,84 @@ table input:focus {
 
 .coh-cell input {
     width: 90% !important;
-
     height: 25px !important;
-
     font-size: 15px !important;
-
     font-weight: bold;
-
     text-align: right !important;
 }
 
+
+/* GRAND TOTAL */
+
 .grand-total-cell {
     background: #fee2e2 !important;
-
     color: #dc2626;
-
     font-weight: bold;
 }
 
 .grand-total-cell > div:last-child {
     font-size: 22px;
-
     font-weight: bold;
 }
 
+
+/* THIRD TABLE TOTALS */
+
 .extra-total-label {
     font-size: 9px !important;
-
     font-weight: bold;
-
     color: #dc2626;
 }
 
 .extra-total-amount {
     font-size: 11px !important;
-
     font-weight: bold;
-
     color: #dc2626;
 }
 
 
 /* ============================================================
-   READ ONLY PREVIEW
+   NOTE BAR
    ============================================================ */
 
-.readonly-preview-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(17, 24, 39, 0.92);
-
-    z-index: 10000;
-
-    display: flex;
-
-    flex-direction: column;
-
-    overflow-y: auto;
-
-    padding: 10px;
-}
-
-.readonly-preview-header {
+.note-bar {
     width: 100%;
-
-    max-width: 650px;
-
-    margin: 0 auto 8px auto;
-
-    background: #111827;
-
-    color: white;
-
-    border-radius: 5px;
-
-    padding: 9px 10px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 8px;
-
-    cursor: pointer;
-
-    user-select: none;
-
-    border: 1px solid #374151;
+    margin-top: 4px;
 }
 
-.readonly-preview-title {
-    font-size: 13px;
-
-    font-weight: 900;
-
-    min-width: 0;
-}
-
-.readonly-preview-subtitle {
-    font-size: 10px;
-
-    color: #cbd5e1;
-
-    margin-top: 2px;
-}
-
-.readonly-preview-close {
-    flex-shrink: 0;
-
-    background: #374151;
-
-    color: white;
-
-    border: none;
-
+#newTableNote {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-
-    padding: 5px 8px;
-
-    font-size: 10px;
-
-    font-weight: bold;
-
-    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
 }
 
-.readonly-preview-content {
-    width: 100%;
-
-    max-width: 650px;
-
-    margin: 0 auto;
-
-    background: #f3f4f6;
-
-    border-radius: 5px;
-
-    overflow: hidden;
+#newTableNote:focus {
+    border-color: #107c41;
 }
 
-.readonly-preview-content .table-box {
-    margin-bottom: 8px;
-}
 
-.readonly-preview-content input {
-    pointer-events: none !important;
+/* ============================================================
+   NEON ANIMATION
+   ============================================================ */
 
-    user-select: none !important;
+@keyframes neonPulse {
 
-    background: #f9fafb !important;
+    0%, 100% {
+        text-shadow:
+            0 0 3px #00ffcc;
+    }
+
+    50% {
+        text-shadow:
+            0 0 5px #00ffcc,
+            0 0 8px #00ffcc;
+    }
+
 }
 
 
@@ -1056,24 +723,18 @@ table input:focus {
 
     .session-bar {
         padding: 7px 8px;
-
         gap: 4px;
-
-        min-height: 54px;
-    }
-
-    .date-watermark {
-        font-size: 58px;
-
-        letter-spacing: -3px;
     }
 
     .session-info {
         min-height: 40px;
-
         flex: 1 1 auto;
-
         min-width: 0;
+    }
+
+    .date-watermark {
+        font-size: 48px;
+        left: 0;
     }
 
     #displayFileDate {
@@ -1086,28 +747,21 @@ table input:focus {
 
     #displayFileName {
         font-size: 10px;
-
         max-width: 110px;
     }
 
     .session-actions {
         gap: 3px;
-
-        flex-shrink: 0;
-
-        white-space: nowrap;
     }
 
-    .session-actions .btn-sm {
+    .btn-sm {
         padding: 4px 6px;
-
         font-size: 10px;
     }
 
     th,
     td {
         height: 24px;
-
         padding: 1px;
     }
 
@@ -1129,7 +783,6 @@ table input:focus {
 
     .table-box-3 input {
         font-size: 10px;
-
         height: 22px;
     }
 
@@ -1145,124 +798,4 @@ table input:focus {
         font-size: 8px;
     }
 
-    .history-item {
-        padding: 7px 5px;
-    }
-
-    .history-file-info {
-        font-size: 11px;
-    }
-
-    .history-file-actions .btn-sm {
-        padding: 4px 5px;
-
-        font-size: 9px;
-    }
-
-    .note-bar {
-        width: 160px !important;
-
-        min-width: 160px !important;
-
-        max-width: 160px !important;
-
-        margin-top: 4px;
-    }
-
-    #newTableNote {
-        display: block;
-
-        width: 160px !important;
-
-        min-width: 160px !important;
-
-        max-width: 160px !important;
-
-        box-sizing: border-box;
-
-        padding: 6px 10px;
-
-        border: 1px solid #ccc;
-
-        border-radius: 4px;
-
-        font-size: 14px;
-
-        font-weight: 600;
-
-        outline: none;
-    }
-
-    #newTableNote:focus {
-        border-color: #107c41;
-    }
-
-    div#newTableNoteBar.note-bar > input#newTableNote {
-        width: 160px !important;
-
-        min-width: 160px !important;
-
-        max-width: 160px !important;
-
-        flex: 0 0 160px !important;
-
-        display: block !important;
-
-        box-sizing: border-box !important;
-
-        padding: 6px 10px;
-
-        border: 1px solid #ccc;
-
-        border-radius: 4px;
-
-        font-size: 14px;
-
-        font-weight: 600;
-
-        outline: none;
-    }
-
-    .readonly-preview-overlay {
-        padding: 6px;
-    }
-
-    .readonly-preview-header {
-        padding: 8px;
-
-        margin-bottom: 6px;
-    }
-
-    .readonly-preview-title {
-        font-size: 11px;
-    }
-
-    .readonly-preview-subtitle {
-        font-size: 9px;
-    }
-
-    .readonly-preview-close {
-        font-size: 9px;
-
-        padding: 5px 6px;
-    }
-}
-
-
-/* ============================================================
-   NEON PULSE
-   ============================================================ */
-
-@keyframes neonPulse {
-
-    0%,
-    100% {
-        text-shadow: 0 0 3px #00ffcc;
-    }
-
-    50% {
-        text-shadow:
-            0 0 5px #00ffcc,
-            0 0 8px #00ffcc;
-    }
 }
