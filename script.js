@@ -104,6 +104,64 @@ const INACTIVITY_LIMIT_MS =
 
 
 // ============================================================
+// SESSION DATE DISPLAY
+// Large Day Watermark + 3-Letter Weekday
+// ============================================================
+
+function updateSessionDateDisplay() {
+
+    const dateEl = document.getElementById("displayFileDate");
+    const nameEl = document.getElementById("displayFileName");
+    const watermarkEl = document.getElementById("dateWatermark");
+    const dayEl = document.getElementById("displayFileDay");
+
+    if (!dateEl || !nameEl || !watermarkEl || !dayEl) return;
+
+    if (!currentSessionDate) {
+
+        dateEl.textContent = "Date: --";
+        nameEl.textContent = currentSessionName || "--";
+        watermarkEl.textContent = "--";
+        dayEl.textContent = "---";
+
+        return;
+    }
+
+    const date = new Date(currentSessionDate + "T00:00:00");
+
+    if (isNaN(date.getTime())) {
+
+        dateEl.textContent = "Date: " + currentSessionDate;
+        nameEl.textContent = currentSessionName || "--";
+        watermarkEl.textContent = "--";
+        dayEl.textContent = "---";
+
+        return;
+    }
+
+    const dayNumber = String(date.getDate()).padStart(2, "0");
+
+    const weekdayNames = [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ];
+
+    const weekday = weekdayNames[date.getDay()];
+
+    dateEl.textContent = "Date: " + currentSessionDate;
+    nameEl.textContent = currentSessionName || "--";
+
+    watermarkEl.textContent = dayNumber;
+    dayEl.textContent = weekday;
+}
+
+
+// ============================================================
 // INACTIVITY
 // ============================================================
 
@@ -328,17 +386,8 @@ function handleModalSubmit() {
         nameVal;
 
 
-    document.getElementById(
-        "displayFileDate"
-    ).textContent =
-        "Date: " +
-        currentSessionDate;
-
-
-    document.getElementById(
-        "displayFileName"
-    ).textContent =
-        currentSessionName;
+    // UPDATED DATE DISPLAY
+    updateSessionDateDisplay();
 
 
     document.getElementById(
@@ -356,15 +405,8 @@ function handleModalSubmit() {
         currentSessionDate = "";
         currentSessionName = "";
 
-        document.getElementById(
-            "displayFileDate"
-        ).textContent =
-            "Date: --";
-
-        document.getElementById(
-            "displayFileName"
-        ).textContent =
-            "--";
+        // UPDATED RESET DISPLAY
+        updateSessionDateDisplay();
 
 
         localStorage.removeItem(
@@ -428,16 +470,8 @@ function resetLedgerState() {
     currentSessionName = "";
 
 
-    document.getElementById(
-        "displayFileDate"
-    ).textContent =
-        "Date: --";
-
-
-    document.getElementById(
-        "displayFileName"
-    ).textContent =
-        "--";
+    // UPDATED RESET DISPLAY
+    updateSessionDateDisplay();
 
 
     clearAllLedgerInputs();
@@ -1836,17 +1870,8 @@ function loadHistoryFile(dateKey) {
         selectedFile.name;
 
 
-    document.getElementById(
-        "displayFileDate"
-    ).textContent =
-        "Date: " +
-        currentSessionDate;
-
-
-    document.getElementById(
-        "displayFileName"
-    ).textContent =
-        currentSessionName;
+    // UPDATED DATE DISPLAY
+    updateSessionDateDisplay();
 
 
     // ========================================================
@@ -2338,17 +2363,8 @@ function loadLedger() {
         ledgerData.name;
 
 
-    document.getElementById(
-        "displayFileDate"
-    ).textContent =
-        "Date: " +
-        currentSessionDate;
-
-
-    document.getElementById(
-        "displayFileName"
-    ).textContent =
-        currentSessionName;
+    // UPDATED DATE DISPLAY
+    updateSessionDateDisplay();
 
 
     // ========================================================
