@@ -46,27 +46,12 @@ body {
 .session-info {
     position: relative;
     min-width: 0;
-    min-height: 42px;
+    min-height: 48px;
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     font-weight: bold;
     overflow: hidden;
-}
-
-.date-watermark {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 52px;
-    line-height: 1;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.13);
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -2px;
 }
 
 .date-foreground {
@@ -76,29 +61,29 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    line-height: 1.15;
+    line-height: 1.05;
     min-width: 0;
 }
 
 #displayFileDate {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 900;
     white-space: nowrap;
 }
 
 .weekday-display {
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 900;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     color: #cbd5e1;
-    line-height: 1;
+    line-height: 1.1;
 }
 
 #displayFileName {
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 900;
     white-space: nowrap;
-    max-width: 150px;
+    max-width: 180px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -392,6 +377,58 @@ table input {
 
 
 /* ============================================================
+   CUSTOMER LIST DAY WATERMARK
+   ============================================================ */
+
+.customer-list-watermark {
+    position: relative;
+    overflow: hidden;
+}
+
+.customer-list-watermark > table {
+    position: relative;
+    z-index: 2;
+}
+
+.customer-list-watermark > table tbody td {
+    background: transparent;
+}
+
+.customer-day-watermark {
+    position: absolute;
+    left: 50%;
+    top: 54%;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+    line-height: 1;
+    font-weight: 900;
+    color: rgba(17, 24, 39, 0.055);
+    letter-spacing: -8px;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.customer-list-watermark .name-input,
+.customer-list-watermark .readonly-col {
+    position: relative;
+}
+
+.customer-list-watermark .name-input {
+    background: rgba(229, 231, 235, 0.72) !important;
+}
+
+.customer-list-watermark .readonly-col {
+    background: rgba(249, 250, 251, 0.72);
+}
+
+.customer-list-watermark .colln-input {
+    background: rgba(254, 243, 199, 0.72) !important;
+}
+
+
+/* ============================================================
    SECOND TABLE
    ============================================================ */
 
@@ -411,7 +448,6 @@ table input {
 }
 
 .table-box-2 table input.readonly-col {
-    background: #f9fafb;
     border: none;
 }
 
@@ -421,7 +457,6 @@ table input {
 }
 
 .table-box-2 table input.colln-input {
-    background: #fef3c7 !important;
     border: 1px solid #f59e0b !important;
     font-weight: bold;
 }
@@ -727,27 +762,22 @@ body.preview-mode .session-bar {
     }
 
     .session-info {
-        min-height: 40px;
+        min-height: 44px;
         flex: 1 1 auto;
         min-width: 0;
     }
 
-    .date-watermark {
-        font-size: 48px;
-        left: 0;
-    }
-
     #displayFileDate {
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .weekday-display {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     #displayFileName {
-        font-size: 10px;
-        max-width: 110px;
+        font-size: 13px;
+        max-width: 130px;
     }
 
     .session-actions {
@@ -757,6 +787,12 @@ body.preview-mode .session-bar {
     .btn-sm {
         padding: 4px 6px;
         font-size: 10px;
+    }
+
+    .customer-day-watermark {
+        font-size: 105px;
+        letter-spacing: -5px;
+        top: 54%;
     }
 
     th,
