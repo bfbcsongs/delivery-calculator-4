@@ -132,14 +132,14 @@ function updateSessionDateDisplay() {
             "displayFileName"
         );
 
-    const watermarkEl =
-        document.getElementById(
-            "dateWatermark"
-        );
-
     const dayEl =
         document.getElementById(
             "displayFileDay"
+        );
+
+    const watermarkEl =
+        document.getElementById(
+            "customerDayWatermark"
         );
 
 
@@ -151,22 +151,23 @@ function updateSessionDateDisplay() {
     if (!currentSessionDate) {
 
         dateEl.textContent =
-            "Date: --";
+            "--";
 
         nameEl.textContent =
             currentSessionName || "--";
-
-        if (watermarkEl) {
-            watermarkEl.textContent =
-                "--";
-        }
 
         if (dayEl) {
             dayEl.textContent =
                 "---";
         }
 
+        if (watermarkEl) {
+            watermarkEl.textContent =
+                "--";
+        }
+
         return;
+
     }
 
 
@@ -179,23 +180,23 @@ function updateSessionDateDisplay() {
     if (isNaN(date.getTime())) {
 
         dateEl.textContent =
-            "Date: " +
             currentSessionDate;
 
         nameEl.textContent =
             currentSessionName || "--";
-
-        if (watermarkEl) {
-            watermarkEl.textContent =
-                "--";
-        }
 
         if (dayEl) {
             dayEl.textContent =
                 "---";
         }
 
+        if (watermarkEl) {
+            watermarkEl.textContent =
+                "--";
+        }
+
         return;
+
     }
 
 
@@ -209,31 +210,48 @@ function updateSessionDateDisplay() {
 
 
     const weekdayNames = [
-        "Sun",
-        "Mon",
-        "Tue",
-        "Wed",
-        "Thu",
-        "Fri",
-        "Sat"
+        "SUN",
+        "MON",
+        "TUE",
+        "WED",
+        "THU",
+        "FRI",
+        "SAT"
     ];
 
 
+    const monthNames = [
+        "JAN",
+        "FEB",
+        "MAR",
+        "APR",
+        "MAY",
+        "JUN",
+        "JUL",
+        "AUG",
+        "SEP",
+        "OCT",
+        "NOV",
+        "DEC"
+    ];
+
+
+    const formattedDate =
+        monthNames[
+            date.getMonth()
+        ] +
+        " " +
+        dayNumber +
+        ", " +
+        date.getFullYear();
+
+
     dateEl.textContent =
-        "Date: " +
-        currentSessionDate;
+        formattedDate;
 
 
     nameEl.textContent =
         currentSessionName || "--";
-
-
-    if (watermarkEl) {
-
-        watermarkEl.textContent =
-            dayNumber;
-
-    }
 
 
     if (dayEl) {
@@ -242,6 +260,14 @@ function updateSessionDateDisplay() {
             weekdayNames[
                 date.getDay()
             ];
+
+    }
+
+
+    if (watermarkEl) {
+
+        watermarkEl.textContent =
+            dayNumber;
 
     }
 
