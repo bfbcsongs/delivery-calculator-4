@@ -99,47 +99,97 @@ let modalMode = "OPEN";
 let inactivityTimer = null;
 let isEditingActive = false;
 
+let previewingHistoryDate = null;
+
 const INACTIVITY_LIMIT_MS =
     15 * 60 * 1000;
 
 
 // ============================================================
 // SESSION DATE DISPLAY
-// Large Day Watermark + 3-Letter Weekday
 // ============================================================
 
 function updateSessionDateDisplay() {
 
-    const dateEl = document.getElementById("displayFileDate");
-    const nameEl = document.getElementById("displayFileName");
-    const watermarkEl = document.getElementById("dateWatermark");
-    const dayEl = document.getElementById("displayFileDay");
+    const dateEl =
+        document.getElementById(
+            "displayFileDate"
+        );
 
-    if (!dateEl || !nameEl || !watermarkEl || !dayEl) return;
+    const nameEl =
+        document.getElementById(
+            "displayFileName"
+        );
+
+    const watermarkEl =
+        document.getElementById(
+            "dateWatermark"
+        );
+
+    const dayEl =
+        document.getElementById(
+            "displayFileDay"
+        );
+
+    if (
+        !dateEl ||
+        !nameEl ||
+        !watermarkEl ||
+        !dayEl
+    ) {
+        return;
+    }
+
 
     if (!currentSessionDate) {
 
-        dateEl.textContent = "Date: --";
-        nameEl.textContent = currentSessionName || "--";
-        watermarkEl.textContent = "--";
-        dayEl.textContent = "---";
+        dateEl.textContent =
+            "Date: --";
+
+        nameEl.textContent =
+            currentSessionName || "--";
+
+        watermarkEl.textContent =
+            "--";
+
+        dayEl.textContent =
+            "---";
 
         return;
     }
 
-    const date = new Date(currentSessionDate + "T00:00:00");
+
+    const date =
+        new Date(
+            currentSessionDate +
+            "T00:00:00"
+        );
+
 
     if (isNaN(date.getTime())) {
 
-        dateEl.textContent = "Date: " + currentSessionDate;
-        nameEl.textContent = currentSessionName || "--";
-        watermarkEl.textContent = "--";
-        dayEl.textContent = "---";
+        dateEl.textContent =
+            "Date: " +
+            currentSessionDate;
+
+        nameEl.textContent =
+            currentSessionName || "--";
+
+        watermarkEl.textContent =
+            "--";
+
+        dayEl.textContent =
+            "---";
 
         return;
     }
 
-    const dayNumber = String(date.getDate()).padStart(2, "0");
+
+    const dayNumber =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
 
     const weekdayNames = [
         "Sun",
@@ -151,13 +201,25 @@ function updateSessionDateDisplay() {
         "Sat"
     ];
 
-    const weekday = weekdayNames[date.getDay()];
 
-    dateEl.textContent = "Date: " + currentSessionDate;
-    nameEl.textContent = currentSessionName || "--";
+    const weekday =
+        weekdayNames[
+            date.getDay()
+        ];
 
-    watermarkEl.textContent = dayNumber;
-    dayEl.textContent = weekday;
+
+    dateEl.textContent =
+        "Date: " +
+        currentSessionDate;
+
+    nameEl.textContent =
+        currentSessionName || "--";
+
+    watermarkEl.textContent =
+        dayNumber;
+
+    dayEl.textContent =
+        weekday;
 }
 
 
@@ -167,13 +229,16 @@ function updateSessionDateDisplay() {
 
 function resetInactivityTimer() {
 
-    clearTimeout(inactivityTimer);
+    clearTimeout(
+        inactivityTimer
+    );
 
-    inactivityTimer = setTimeout(() => {
+    inactivityTimer =
+        setTimeout(() => {
 
-        autoSaveAndReset();
+            autoSaveAndReset();
 
-    }, INACTIVITY_LIMIT_MS);
+        }, INACTIVITY_LIMIT_MS);
 
 }
 
@@ -201,12 +266,14 @@ function resetInactivityTimer() {
 
 function setEncodingEditable(editable) {
 
-    isEditingActive = editable;
+    isEditingActive =
+        editable;
 
     const inputs =
         document.querySelectorAll(
             '.main-wrapper input:not(.price-input):not(#modalDateInput):not(#modalNameInput)'
         );
+
 
     inputs.forEach(input => {
 
@@ -216,7 +283,8 @@ function setEncodingEditable(editable) {
             )
         ) {
 
-            input.disabled = !editable;
+            input.disabled =
+                !editable;
 
         }
 
@@ -231,7 +299,8 @@ function setEncodingEditable(editable) {
 
 function showOpenModal() {
 
-    modalMode = "OPEN";
+    modalMode =
+        "OPEN";
 
     document.getElementById(
         "modalTitle"
@@ -250,11 +319,13 @@ function showOpenModal() {
 
     document.getElementById(
         "modalDateInput"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "modalNameInput"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "setupModal"
@@ -279,7 +350,9 @@ function openSaveConfirmationModal() {
     }
 
 
-    modalMode = "SAVE";
+    modalMode =
+        "SAVE";
+
 
     document.getElementById(
         "modalTitle"
@@ -327,7 +400,10 @@ function handleModalSubmit() {
         ).value.trim();
 
 
-    if (!dateVal || !nameVal) {
+    if (
+        !dateVal ||
+        !nameVal
+    ) {
 
         alert(
             "Both Date and Name are required!"
@@ -337,7 +413,10 @@ function handleModalSubmit() {
     }
 
 
-    if (modalMode === "SAVE") {
+    if (
+        modalMode ===
+        "SAVE"
+    ) {
 
         const history =
             JSON.parse(
@@ -348,18 +427,24 @@ function handleModalSubmit() {
 
 
         const isDuplicate =
-            history.some(item =>
-                item.date === dateVal &&
-                item.date !== currentSessionDate
+            history.some(
+                item =>
+                    item.date ===
+                    dateVal &&
+                    item.date !==
+                    currentSessionDate
             );
 
 
         if (
             isDuplicate ||
             (
-                dateVal === currentSessionDate &&
-                history.some(item =>
-                    item.date === dateVal
+                dateVal ===
+                currentSessionDate &&
+                history.some(
+                    item =>
+                        item.date ===
+                        dateVal
                 )
             )
         ) {
@@ -386,7 +471,6 @@ function handleModalSubmit() {
         nameVal;
 
 
-    // UPDATED DATE DISPLAY
     updateSessionDateDisplay();
 
 
@@ -396,16 +480,21 @@ function handleModalSubmit() {
         "none";
 
 
-    if (modalMode === "SAVE") {
+    if (
+        modalMode ===
+        "SAVE"
+    ) {
 
         forceSaveCurrentDay();
 
         clearAllLedgerInputs();
 
-        currentSessionDate = "";
-        currentSessionName = "";
+        currentSessionDate =
+            "";
 
-        // UPDATED RESET DISPLAY
+        currentSessionName =
+            "";
+
         updateSessionDateDisplay();
 
 
@@ -414,11 +503,15 @@ function handleModalSubmit() {
         );
 
 
-        setEncodingEditable(false);
+        setEncodingEditable(
+            false
+        );
 
     } else {
 
-        setEncodingEditable(true);
+        setEncodingEditable(
+            true
+        );
 
         resetInactivityTimer();
 
@@ -466,11 +559,15 @@ function autoSaveAndReset() {
 
 function resetLedgerState() {
 
-    currentSessionDate = "";
-    currentSessionName = "";
+    closeHistoryPreview();
+
+    currentSessionDate =
+        "";
+
+    currentSessionName =
+        "";
 
 
-    // UPDATED RESET DISPLAY
     updateSessionDateDisplay();
 
 
@@ -482,9 +579,13 @@ function resetLedgerState() {
     );
 
 
-    setEncodingEditable(false);
+    setEncodingEditable(
+        false
+    );
+
 
     renderHistoryUI();
+
 
     showOpenModal();
 
@@ -500,85 +601,99 @@ function clearAllLedgerInputs() {
     clearMainInputs();
 
 
-    // ========================================================
-    // SECOND TABLE
-    // ========================================================
-
-    for (let i = 1; i <= 16; i++) {
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
 
         document.getElementById(
             `ledgerName_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerDry_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerFresh_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerCab_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerBo_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerBal_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerBilling_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerPay_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `ledgerRem_${i}`
-        ).value = "";
+        ).value =
+            "";
 
     }
 
 
-    // ========================================================
-    // THIRD TABLE
-    // ========================================================
-
-    for (let i = 1; i <= 8; i++) {
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
 
         document.getElementById(
             `extraItem_${i}`
-        ).value = "";
+        ).value =
+            "";
 
         document.getElementById(
             `extraAmount_${i}`
-        ).value = "";
+        ).value =
+            "";
 
     }
 
 
     document.getElementById(
         "inputCOH"
-    ).value = "0";
+    ).value =
+        "0";
 
 
-    // NOTE
     const note =
         document.getElementById(
             "newTableNote"
         );
 
+
     if (note) {
-        note.value = "";
+        note.value =
+            "";
     }
 
 
-    activeRow = 1;
+    activeRow =
+        1;
 
 
     document.getElementById(
@@ -602,21 +717,29 @@ function handleKeyClick() {
 
     tapCount++;
 
-    clearTimeout(tapTimer);
+    clearTimeout(
+        tapTimer
+    );
+
 
     tapTimer =
         setTimeout(() => {
 
-            tapCount = 0;
+            tapCount =
+                0;
 
         }, 1000);
 
 
-    if (tapCount >= 5) {
+    if (
+        tapCount >= 5
+    ) {
 
-        tapCount = 0;
+        tapCount =
+            0;
 
-        isLocked = !isLocked;
+        isLocked =
+            !isLocked;
 
         toggleLockState(
             isLocked
@@ -649,7 +772,8 @@ function toggleLockState(locked) {
 
     nameInputs.forEach(field => {
 
-        field.readOnly = locked;
+        field.readOnly =
+            locked;
 
         field.style.backgroundColor =
             locked ?
@@ -669,19 +793,26 @@ function handlePriceKeyClick() {
 
     priceTapCount++;
 
-    clearTimeout(priceTapTimer);
+    clearTimeout(
+        priceTapTimer
+    );
+
 
     priceTapTimer =
         setTimeout(() => {
 
-            priceTapCount = 0;
+            priceTapCount =
+                0;
 
         }, 1000);
 
 
-    if (priceTapCount >= 5) {
+    if (
+        priceTapCount >= 5
+    ) {
 
-        priceTapCount = 0;
+        priceTapCount =
+            0;
 
         isPriceLocked =
             !isPriceLocked;
@@ -717,7 +848,8 @@ function togglePriceLockState(locked) {
 
     priceInputs.forEach(field => {
 
-        field.readOnly = locked;
+        field.readOnly =
+            locked;
 
         field.style.backgroundColor =
             locked ?
@@ -736,7 +868,9 @@ function togglePriceLockState(locked) {
 function getVal(id) {
 
     const element =
-        document.getElementById(id);
+        document.getElementById(
+            id
+        );
 
 
     if (!element) {
@@ -778,7 +912,10 @@ function formatMoney(value) {
 
 function updateActiveCustomerName(row) {
 
-    if (row === activeRow) {
+    if (
+        row ===
+        activeRow
+    ) {
 
         const nameVal =
             document.getElementById(
@@ -872,47 +1009,57 @@ function clearMainInputs() {
 
     document.getElementById(
         "qtyReg"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "syncDry"
-    ).value = "";
+    ).value =
+        "";
 
 
     document.getElementById(
         "qtyFresh"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "syncFresh"
-    ).value = "";
+    ).value =
+        "";
 
 
     document.getElementById(
         "qtyCab"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "syncCab"
-    ).value = "";
+    ).value =
+        "";
 
 
     document.getElementById(
         "qtyBo"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "syncBo"
-    ).value = "";
+    ).value =
+        "";
 
 
     document.getElementById(
         "inputBal"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "inputPay"
-    ).value = "";
+    ).value =
+        "";
 
 
     calculateMain();
@@ -934,7 +1081,8 @@ function calculateMain() {
 
     const regAmount =
         Math.round(
-            regQty * regPrice
+            regQty *
+            regPrice
         );
 
 
@@ -946,7 +1094,8 @@ function calculateMain() {
 
     const freshAmount =
         Math.round(
-            freshQty * freshPrice
+            freshQty *
+            freshPrice
         );
 
 
@@ -958,7 +1107,8 @@ function calculateMain() {
 
     const cabAmount =
         Math.round(
-            cabQty * cabPrice
+            cabQty *
+            cabPrice
         );
 
 
@@ -970,7 +1120,8 @@ function calculateMain() {
 
     const boAmount =
         Math.round(
-            (boQty / 2) * boPrice
+            (boQty / 2) *
+            boPrice
         );
 
 
@@ -1006,42 +1157,50 @@ function calculateMain() {
     document.getElementById(
         "amountReg"
     ).textContent =
-        formatMoney(regAmount);
+        formatMoney(
+            regAmount
+        );
 
 
     document.getElementById(
         "amountFresh"
     ).textContent =
-        formatMoney(freshAmount);
+        formatMoney(
+            freshAmount
+        );
 
 
     document.getElementById(
         "amountCab"
     ).textContent =
-        formatMoney(cabAmount);
+        formatMoney(
+            cabAmount
+        );
 
 
     document.getElementById(
         "amountBo"
     ).textContent =
-        formatMoney(boAmount);
+        formatMoney(
+            boAmount
+        );
 
 
     document.getElementById(
         "totalAmount"
     ).textContent =
-        formatMoney(total);
+        formatMoney(
+            total
+        );
 
 
     document.getElementById(
         "netTotalAmount"
     ).textContent =
-        formatMoney(netTotal);
+        formatMoney(
+            netTotal
+        );
 
-
-    // ========================================================
-    // SYNC TO SECOND TABLE
-    // ========================================================
 
     document.getElementById(
         `ledgerDry_${activeRow}`
@@ -1137,14 +1296,20 @@ function calculateMain() {
 
 function loadRowToMain(row) {
 
-    if (!isEditingActive) {
+    if (
+        !isEditingActive
+    ) {
         return;
     }
 
 
-    activeRow = row;
+    activeRow =
+        row;
 
-    updateActiveCustomerName(row);
+
+    updateActiveCustomerName(
+        row
+    );
 
 
     document.getElementById(
@@ -1241,7 +1406,8 @@ function loadRowToMain(row) {
         "inputPay"
     ).value =
         (
-            rawColln !== rawBilling
+            rawColln !==
+            rawBilling
         ) ?
         rawColln :
         "";
@@ -1269,7 +1435,11 @@ function calculateLedgerTotals() {
     let sumRem = 0;
 
 
-    for (let i = 1; i <= 16; i++) {
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
 
         sumDry +=
             parseFloat(
@@ -1361,19 +1531,25 @@ function calculateLedgerTotals() {
     document.getElementById(
         "totalDry"
     ).textContent =
-        formatMoney(sumDry);
+        formatMoney(
+            sumDry
+        );
 
 
     document.getElementById(
         "totalFresh"
     ).textContent =
-        formatMoney(sumFresh);
+        formatMoney(
+            sumFresh
+        );
 
 
     document.getElementById(
         "totalCab"
     ).textContent =
-        formatMoney(sumCab);
+        formatMoney(
+            sumCab
+        );
 
 
     document.getElementById(
@@ -1387,28 +1563,35 @@ function calculateLedgerTotals() {
     document.getElementById(
         "totalBal"
     ).textContent =
-        formatMoney(sumBal);
+        formatMoney(
+            sumBal
+        );
 
 
     document.getElementById(
         "totalBilling"
     ).textContent =
-        formatMoney(sumBilling);
+        formatMoney(
+            sumBilling
+        );
 
 
     document.getElementById(
         "totalColln"
     ).textContent =
-        formatMoney(sumColln);
+        formatMoney(
+            sumColln
+        );
 
 
     document.getElementById(
         "totalRem"
     ).textContent =
-        formatMoney(sumRem);
+        formatMoney(
+            sumRem
+        );
 
 
-    // Update third table
     calculateExtraTable();
 
 }
@@ -1424,10 +1607,6 @@ function calculateExtraTable() {
     let allAmounts = 0;
 
 
-    // ========================================================
-    // C2 = amounts 1, 3, 5, 7
-    // ========================================================
-
     const c2Ids = [
         "extraAmount_1",
         "extraAmount_3",
@@ -1439,7 +1618,9 @@ function calculateExtraTable() {
     c2Ids.forEach(id => {
 
         const element =
-            document.getElementById(id);
+            document.getElementById(
+                id
+            );
 
 
         if (element) {
@@ -1454,11 +1635,11 @@ function calculateExtraTable() {
     });
 
 
-    // ========================================================
-    // C4 = ALL 8 AMOUNTS
-    // ========================================================
-
-    for (let i = 1; i <= 8; i++) {
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
 
         const element =
             document.getElementById(
@@ -1478,10 +1659,6 @@ function calculateExtraTable() {
     }
 
 
-    // ========================================================
-    // SECOND TABLE COLL'N
-    // ========================================================
-
     const totalCollnElement =
         document.getElementById(
             "totalColln"
@@ -1492,23 +1669,18 @@ function calculateExtraTable() {
         totalCollnElement ?
         parseFloat(
             totalCollnElement.textContent
-                .replace(/,/g, '')
+                .replace(
+                    /,/g,
+                    ''
+                )
         ) || 0 :
         0;
 
-
-    // ========================================================
-    // COLL'N + ALL AMOUNTS
-    // ========================================================
 
     const collectionPlusExtra =
         secondTableColln -
         allAmounts;
 
-
-    // ========================================================
-    // COH
-    // ========================================================
 
     const cohElement =
         document.getElementById(
@@ -1524,18 +1696,10 @@ function calculateExtraTable() {
         0;
 
 
-    // ========================================================
-    // GRAND TOTAL
-    // ========================================================
-
     const grandTotal =
         collectionPlusExtra -
         coh;
 
-
-    // ========================================================
-    // DISPLAY
-    // ========================================================
 
     const c2Total =
         document.getElementById(
@@ -1646,61 +1810,79 @@ function saveLedger() {
     };
 
 
-    // ========================================================
-    // SECOND TABLE
-    // ========================================================
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
 
-    for (let i = 1; i <= 16; i++) {
-
-        ledgerData.rows[`name_${i}`] =
+        ledgerData.rows[
+            `name_${i}`
+        ] =
             document.getElementById(
                 `ledgerName_${i}`
             ).value;
 
 
-        ledgerData.rows[`dry_${i}`] =
+        ledgerData.rows[
+            `dry_${i}`
+        ] =
             document.getElementById(
                 `ledgerDry_${i}`
             ).value;
 
 
-        ledgerData.rows[`fresh_${i}`] =
+        ledgerData.rows[
+            `fresh_${i}`
+        ] =
             document.getElementById(
                 `ledgerFresh_${i}`
             ).value;
 
 
-        ledgerData.rows[`cab_${i}`] =
+        ledgerData.rows[
+            `cab_${i}`
+        ] =
             document.getElementById(
                 `ledgerCab_${i}`
             ).value;
 
 
-        ledgerData.rows[`bo_${i}`] =
+        ledgerData.rows[
+            `bo_${i}`
+        ] =
             document.getElementById(
                 `ledgerBo_${i}`
             ).value;
 
 
-        ledgerData.rows[`bal_${i}`] =
+        ledgerData.rows[
+            `bal_${i}`
+        ] =
             document.getElementById(
                 `ledgerBal_${i}`
             ).value;
 
 
-        ledgerData.rows[`billing_${i}`] =
+        ledgerData.rows[
+            `billing_${i}`
+        ] =
             document.getElementById(
                 `ledgerBilling_${i}`
             ).value;
 
 
-        ledgerData.rows[`pay_${i}`] =
+        ledgerData.rows[
+            `pay_${i}`
+        ] =
             document.getElementById(
                 `ledgerPay_${i}`
             ).value;
 
 
-        ledgerData.rows[`rem_${i}`] =
+        ledgerData.rows[
+            `rem_${i}`
+        ] =
             document.getElementById(
                 `ledgerRem_${i}`
             ).value;
@@ -1708,19 +1890,23 @@ function saveLedger() {
     }
 
 
-    // ========================================================
-    // THIRD TABLE
-    // ========================================================
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
 
-    for (let i = 1; i <= 8; i++) {
-
-        ledgerData.extraTable[`item_${i}`] =
+        ledgerData.extraTable[
+            `item_${i}`
+        ] =
             document.getElementById(
                 `extraItem_${i}`
             ).value;
 
 
-        ledgerData.extraTable[`amount_${i}`] =
+        ledgerData.extraTable[
+            `amount_${i}`
+        ] =
             document.getElementById(
                 `extraAmount_${i}`
             ).value;
@@ -1733,10 +1919,6 @@ function saveLedger() {
             "inputCOH"
         ).value;
 
-
-    // ========================================================
-    // SAVE TO LOCAL STORAGE
-    // ========================================================
 
     localStorage.setItem(
         "miki_ledger_data",
@@ -1794,9 +1976,14 @@ function forceSaveCurrentDay() {
         );
 
 
-    if (existingIndex !== -1) {
+    if (
+        existingIndex !==
+        -1
+    ) {
 
-        history[existingIndex] =
+        history[
+            existingIndex
+        ] =
             activeDraft;
 
     } else {
@@ -1808,7 +1995,10 @@ function forceSaveCurrentDay() {
     }
 
 
-    if (history.length > 30) {
+    if (
+        history.length >
+        30
+    ) {
 
         history =
             history.slice(
@@ -1833,10 +2023,10 @@ function forceSaveCurrentDay() {
 
 
 // ============================================================
-// LOAD HISTORY FILE
+// PREVIEW HELPERS
 // ============================================================
 
-function loadHistoryFile(dateKey) {
+function getHistoryFile(dateKey) {
 
     const history =
         JSON.parse(
@@ -1846,11 +2036,751 @@ function loadHistoryFile(dateKey) {
         );
 
 
+    return history.find(
+        item =>
+            item.date ===
+            dateKey
+    ) || null;
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+function previewMoney(value) {
+
+    const number =
+        parseFloat(
+            String(
+                value ?? 0
+            ).replace(
+                /,/g,
+                ""
+            )
+        ) || 0;
+
+    return formatMoney(
+        number
+    );
+
+}
+
+
+function buildHistoryPreview(file) {
+
+    const date =
+        new Date(
+            file.date +
+            "T00:00:00"
+        );
+
+
+    const dayNumber =
+        isNaN(
+            date.getTime()
+        ) ?
+        "--" :
+        String(
+            date.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const weekdays = [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ];
+
+
+    const weekday =
+        isNaN(
+            date.getTime()
+        ) ?
+        "---" :
+        weekdays[
+            date.getDay()
+        ];
+
+
+    let rowsHtml = "";
+
+
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
+
+        const row =
+            file.rows || {};
+
+
+        rowsHtml += `
+
+            <tr>
+
+                <td class="preview-name">
+                    ${escapeHtml(
+                        row[`name_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`dry_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`fresh_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`cab_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`bo_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`bal_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`billing_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`pay_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        row[`rem_${i}`] || ""
+                    )}
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+
+    let extraRowsHtml = "";
+
+
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
+
+        const extra =
+            file.extraTable || {};
+
+
+        extraRowsHtml += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(
+                        extra[`item_${i}`] || ""
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHtml(
+                        extra[`amount_${i}`] || ""
+                    )}
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+
+    const extra =
+        file.extraTable || {};
+
+
+    return `
+
+        <div class="preview-sheet">
+
+            <!-- PREVIEW HEADER -->
+
+            <div class="preview-date-header">
+
+                <div class="preview-watermark">
+                    ${dayNumber}
+                </div>
+
+                <div class="preview-date-text">
+
+                    <div>
+                        Date: ${escapeHtml(
+                            file.date
+                        )}
+                    </div>
+
+                    <div class="preview-weekday">
+                        ${weekday}
+                    </div>
+
+                    <div>
+                        ${escapeHtml(
+                            file.name
+                        )}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECOND TABLE -->
+
+            <div class="table-box table-box-2">
+
+                <table>
+
+                    <colgroup>
+
+                        <col style="width:12%;">
+                        <col style="width:8%;">
+                        <col style="width:8%;">
+                        <col style="width:8%;">
+                        <col style="width:8%;">
+                        <col style="width:15%;">
+                        <col style="width:15%;">
+                        <col style="width:15%;">
+                        <col style="width:13%;">
+
+                    </colgroup>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Names</th>
+                            <th>Dry</th>
+                            <th>Fresh</th>
+                            <th>Cab</th>
+                            <th>BO</th>
+                            <th>Bal</th>
+                            <th>Billing</th>
+                            <th class="colln-header">
+                                Coll'n
+                            </th>
+                            <th>Utang</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${rowsHtml}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- SECOND TABLE TOTALS -->
+
+            <div class="table-box">
+
+                <table>
+
+                    <tr>
+
+                        <th>NET TOTAL</th>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "dry"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "fresh"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "cab"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "bo"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "bal"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "billing"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "pay"
+                                )
+                            )}
+                        </td>
+
+                        <td>
+                            ${previewMoney(
+                                sumHistoryColumn(
+                                    file,
+                                    "rem"
+                                )
+                            )}
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+            <!-- THIRD TABLE -->
+
+            <div class="table-box table-box-3">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ITEMS</th>
+                            <th>AMOUNT</th>
+                            <th>ITEMS</th>
+                            <th>AMOUNT</th>
+                            <th>SUMMARY</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        ${buildPreviewExtraRows(
+                            file
+                        )}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- NOTE -->
+
+            <div class="preview-note">
+
+                <strong>NOTE:</strong>
+
+                ${escapeHtml(
+                    extra.note || ""
+                )}
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function sumHistoryColumn(
+    file,
+    type
+) {
+
+    let total = 0;
+
+    const rows =
+        file.rows || {};
+
+
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
+
+        total +=
+            parseFloat(
+                String(
+                    rows[
+                        `${type}_${i}`
+                    ] || 0
+                ).replace(
+                    /,/g,
+                    ""
+                )
+            ) || 0;
+
+    }
+
+
+    return total;
+
+}
+
+
+function buildPreviewExtraRows(
+    file
+) {
+
+    const extra =
+        file.extraTable || {};
+
+
+    let html = "";
+
+
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
+
+        const item =
+            extra[
+                `item_${i}`
+            ] || "";
+
+        const amount =
+            extra[
+                `amount_${i}`
+            ] || "";
+
+
+        html += `
+
+            <tr>
+
+                <td>
+                    ${escapeHtml(item)}
+                </td>
+
+                <td>
+                    ${escapeHtml(amount)}
+                </td>
+
+                <td>
+                    ${i === 1 ? "Collection - Expenses" : ""}
+                </td>
+
+                <td>
+                    ${i === 1 ? calculatePreviewCollection(file) : ""}
+                </td>
+
+                <td>
+                    ${i === 1 ? "COH" : ""}
+                    ${i === 2 ? escapeHtml(extra.coh || "0") : ""}
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+
+    return html;
+
+}
+
+
+function calculatePreviewCollection(
+    file
+) {
+
+    const collection =
+        sumHistoryColumn(
+            file,
+            "pay"
+        );
+
+
+    let expenses = 0;
+
+
+    const extra =
+        file.extraTable || {};
+
+
+    for (
+        let i = 1;
+        i <= 8;
+        i++
+    ) {
+
+        expenses +=
+            parseFloat(
+                extra[
+                    `amount_${i}`
+                ] || 0
+            ) || 0;
+
+    }
+
+
+    return previewMoney(
+        collection -
+        expenses
+    );
+
+}
+
+
+// ============================================================
+// OPEN READ ONLY PREVIEW
+// ============================================================
+
+function openHistoryPreview(
+    dateKey
+) {
+
+    const file =
+        getHistoryFile(
+            dateKey
+        );
+
+
+    if (!file) {
+        return;
+    }
+
+
+    previewingHistoryDate =
+        dateKey;
+
+
+    closeHistoryPreview();
+
+
+    const overlay =
+        document.createElement(
+            "div"
+        );
+
+
+    overlay.id =
+        "historyPreviewOverlay";
+
+
+    overlay.className =
+        "readonly-preview-overlay";
+
+
+    overlay.innerHTML = `
+
+        <div
+            class="readonly-preview-header"
+            onclick="closeHistoryPreview()"
+        >
+
+            <div>
+
+                <div class="readonly-preview-title">
+
+                    READ ONLY —
+                    ${escapeHtml(
+                        file.date
+                    )}
+                    •
+                    ${escapeHtml(
+                        file.name
+                    )}
+
+                </div>
+
+                <div class="readonly-preview-subtitle">
+
+                    Tap this header again to return
+                    to Saved Files
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="readonly-preview-close"
+                onclick="event.stopPropagation(); closeHistoryPreview();"
+            >
+                BACK
+            </button>
+
+        </div>
+
+
+        <div
+            class="readonly-preview-content"
+            onclick="event.stopPropagation()"
+        >
+
+            ${buildHistoryPreview(
+                file
+            )}
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        overlay
+    );
+
+}
+
+
+// ============================================================
+// CLOSE READ ONLY PREVIEW
+// ============================================================
+
+function closeHistoryPreview() {
+
+    const existing =
+        document.getElementById(
+            "historyPreviewOverlay"
+        );
+
+
+    if (existing) {
+
+        existing.remove();
+
+    }
+
+
+    previewingHistoryDate =
+        null;
+
+}
+
+
+// ============================================================
+// EDIT SAVED FILE
+// ============================================================
+
+function editHistoryFile(
+    dateKey
+) {
+
+    closeHistoryPreview();
+
+    loadHistoryFile(
+        dateKey
+    );
+
+}
+
+
+// ============================================================
+// LOAD HISTORY FILE FOR EDITING
+// ============================================================
+
+function loadHistoryFile(
+    dateKey
+) {
+
     const selectedFile =
-        history.find(
-            item =>
-                item.date ===
-                dateKey
+        getHistoryFile(
+            dateKey
         );
 
 
@@ -1865,20 +2795,18 @@ function loadHistoryFile(dateKey) {
     currentSessionDate =
         selectedFile.date;
 
-
     currentSessionName =
         selectedFile.name;
 
 
-    // UPDATED DATE DISPLAY
     updateSessionDateDisplay();
 
 
-    // ========================================================
-    // SECOND TABLE
-    // ========================================================
-
-    for (let i = 1; i <= 16; i++) {
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
 
         if (
             selectedFile.rows &&
@@ -2035,13 +2963,15 @@ function loadHistoryFile(dateKey) {
     }
 
 
-    // ========================================================
-    // THIRD TABLE
-    // ========================================================
+    if (
+        selectedFile.extraTable
+    ) {
 
-    if (selectedFile.extraTable) {
-
-        for (let i = 1; i <= 8; i++) {
+        for (
+            let i = 1;
+            i <= 8;
+            i++
+        ) {
 
             if (
                 selectedFile.extraTable[
@@ -2090,7 +3020,6 @@ function loadHistoryFile(dateKey) {
         }
 
 
-        // NOTE
         const noteElement =
             document.getElementById(
                 "newTableNote"
@@ -2114,10 +3043,14 @@ function loadHistoryFile(dateKey) {
         "none";
 
 
-    setEncodingEditable(true);
+    setEncodingEditable(
+        true
+    );
 
 
-    loadRowToMain(1);
+    loadRowToMain(
+        1
+    );
 
 
     calculateLedgerTotals();
@@ -2142,7 +3075,9 @@ function loadHistoryFile(dateKey) {
 // DELETE HISTORY
 // ============================================================
 
-function deleteHistoryFile(dateKey) {
+function deleteHistoryFile(
+    dateKey
+) {
 
     if (
         confirm(
@@ -2172,6 +3107,16 @@ function deleteHistoryFile(dateKey) {
                 history
             )
         );
+
+
+        if (
+            previewingHistoryDate ===
+            dateKey
+        ) {
+
+            closeHistoryPreview();
+
+        }
 
 
         renderHistoryUI();
@@ -2213,7 +3158,10 @@ function renderHistoryUI(
         `${history.length} / 30`;
 
 
-    if (history.length === 0) {
+    if (
+        history.length ===
+        0
+    ) {
 
         historyContainer.innerHTML =
             `<p style="color:#9ca3af;text-align:center;margin:10px 0;">
@@ -2254,24 +3202,53 @@ function renderHistoryUI(
             }`;
 
 
+        div.onclick =
+            function() {
+
+                openHistoryPreview(
+                    item.date
+                );
+
+            };
+
+
         div.innerHTML = `
 
-            <div>
-                <strong>${item.date}</strong> - ${item.name}
+            <div class="history-file-info">
+
+                <strong>
+                    ${escapeHtml(
+                        item.date
+                    )}
+                </strong>
+
+                -
+                ${escapeHtml(
+                    item.name
+                )}
+
             </div>
 
-            <div>
+
+            <div class="history-file-actions">
 
                 <button
                     class="btn-sm btn-edit"
-                    onclick="loadHistoryFile('${item.date}')"
+                    onclick="
+                        event.stopPropagation();
+                        editHistoryFile('${item.date}');
+                    "
                 >
                     Edit
                 </button>
 
+
                 <button
                     class="btn-sm btn-del"
-                    onclick="deleteHistoryFile('${item.date}')"
+                    onclick="
+                        event.stopPropagation();
+                        deleteHistoryFile('${item.date}');
+                    "
                 >
                     Del
                 </button>
@@ -2307,7 +3284,9 @@ function loadLedger() {
 
     if (!saved) {
 
-        setEncodingEditable(false);
+        setEncodingEditable(
+            false
+        );
 
         showOpenModal();
 
@@ -2321,7 +3300,9 @@ function loadLedger() {
     try {
 
         ledgerData =
-            JSON.parse(saved);
+            JSON.parse(
+                saved
+            );
 
     } catch (error) {
 
@@ -2330,11 +3311,15 @@ function loadLedger() {
             error
         );
 
+
         localStorage.removeItem(
             "miki_ledger_data"
         );
 
-        setEncodingEditable(false);
+
+        setEncodingEditable(
+            false
+        );
 
         showOpenModal();
 
@@ -2347,7 +3332,9 @@ function loadLedger() {
         !ledgerData.name
     ) {
 
-        setEncodingEditable(false);
+        setEncodingEditable(
+            false
+        );
 
         showOpenModal();
 
@@ -2358,20 +3345,18 @@ function loadLedger() {
     currentSessionDate =
         ledgerData.date;
 
-
     currentSessionName =
         ledgerData.name;
 
 
-    // UPDATED DATE DISPLAY
     updateSessionDateDisplay();
 
 
-    // ========================================================
-    // SECOND TABLE
-    // ========================================================
-
-    for (let i = 1; i <= 16; i++) {
+    for (
+        let i = 1;
+        i <= 16;
+        i++
+    ) {
 
         if (
             ledgerData.rows &&
@@ -2528,13 +3513,15 @@ function loadLedger() {
     }
 
 
-    // ========================================================
-    // THIRD TABLE
-    // ========================================================
+    if (
+        ledgerData.extraTable
+    ) {
 
-    if (ledgerData.extraTable) {
-
-        for (let i = 1; i <= 8; i++) {
+        for (
+            let i = 1;
+            i <= 8;
+            i++
+        ) {
 
             if (
                 ledgerData.extraTable[
@@ -2583,7 +3570,6 @@ function loadLedger() {
         }
 
 
-        // NOTE
         const noteElement =
             document.getElementById(
                 "newTableNote"
@@ -2607,10 +3593,14 @@ function loadLedger() {
         "none";
 
 
-    setEncodingEditable(true);
+    setEncodingEditable(
+        true
+    );
 
 
-    loadRowToMain(1);
+    loadRowToMain(
+        1
+    );
 
 
     calculateLedgerTotals();
@@ -2619,7 +3609,6 @@ function loadLedger() {
 
 
     renderHistoryUI();
-
 
     resetInactivityTimer();
 
