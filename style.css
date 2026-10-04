@@ -33,23 +33,40 @@ body {
     color: white;
     padding: 8px 12px;
     border-radius: 4px 4px 0 0;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    gap: 6px;
+
+    width: 100%;
+    box-sizing: border-box;
+
     font-size: 13px;
+
     border: 1px solid #d1d5db;
     border-bottom: none;
+
+    overflow: visible;
 }
 
 .session-info {
     position: relative;
+
     min-width: 0;
     min-height: 42px;
+
+    flex: 1 1 auto;
+
     display: flex;
     align-items: center;
+
     font-weight: bold;
+
     overflow: hidden;
 }
+
 
 /* ============================================================
    DATE WATERMARK
@@ -60,6 +77,7 @@ body {
     position: absolute;
     left: 0;
     top: 50%;
+
     transform: translateY(-50%);
 
     font-size: 52px;
@@ -69,9 +87,13 @@ body {
     color: rgba(255, 255, 255, 0.13);
 
     z-index: 0;
+
     pointer-events: none;
     user-select: none;
+
+    letter-spacing: -2px;
 }
+
 
 /* ============================================================
    DATE FOREGROUND
@@ -83,10 +105,12 @@ body {
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: flex-start;
 
     line-height: 1.15;
+
     min-width: 0;
 }
 
@@ -99,8 +123,12 @@ body {
 .weekday-display {
     font-size: 10px;
     font-weight: 900;
+
     letter-spacing: 0.5px;
+
     color: #cbd5e1;
+
+    line-height: 1;
 }
 
 .session-divider {
@@ -110,17 +138,33 @@ body {
 #displayFileName {
     font-size: 11px;
     font-weight: 700;
+
     white-space: nowrap;
+
     max-width: 150px;
+
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Keep the Save / New Day buttons from being affected */
-.session-bar > div:last-child {
+
+/* ============================================================
+   SAVE / NEW DAY BUTTONS
+   ============================================================ */
+
+.session-actions {
     position: relative;
-    z-index: 2;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
     flex-shrink: 0;
+
+    white-space: nowrap;
 }
 
 
@@ -134,32 +178,45 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
+
     background: rgba(0,0,0,0.7);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     z-index: 9999;
 }
 
 .setup-modal {
     position: relative;
+
     background: white;
+
     padding: 20px;
+
     border-radius: 8px;
+
     width: 90%;
     max-width: 400px;
+
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .modal-close-btn {
     position: absolute;
+
     top: 10px;
     right: 12px;
+
     background: transparent;
     border: none;
+
     font-size: 20px;
     font-weight: bold;
+
     color: #6b7280;
+
     cursor: pointer;
 }
 
@@ -169,35 +226,48 @@ body {
 
 .setup-modal h3 {
     margin-top: 0;
+
     color: #111827;
+
     padding-right: 20px;
 }
 
 .setup-modal label {
     display: block;
+
     font-size: 12px;
     font-weight: bold;
+
     margin-top: 10px;
     margin-bottom: 4px;
 }
 
 .setup-modal input {
     width: 100%;
+
     padding: 8px;
+
     border: 1px solid #d1d5db;
     border-radius: 4px;
+
     font-size: 14px;
 }
 
 .setup-btn {
     width: 100%;
+
     margin-top: 15px;
+
     padding: 10px;
+
     background: #2563eb;
     color: white;
+
     border: none;
     border-radius: 4px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
@@ -212,18 +282,26 @@ body {
 
 .history-section {
     background: white;
+
     border: 1px solid #d1d5db;
+
     margin-top: 10px;
+
     padding: 10px;
+
     border-radius: 4px;
+
     display: flex;
     flex-direction: column;
 }
 
 .history-title {
     font-weight: bold;
+
     font-size: 14px;
+
     margin-bottom: 8px;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -231,25 +309,36 @@ body {
 
 .history-list {
     max-height: 120px;
+
     overflow-y: auto;
+
     font-size: 12px;
+
     border: 1px solid #f3f4f6;
+
     border-radius: 4px;
+
     padding: 2px;
 }
 
 .history-item {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     padding: 6px;
+
     border-bottom: 1px solid #f3f4f6;
+
     border-radius: 4px;
+
     transition: background-color 0.2s ease;
 }
 
 .history-item.selected-file {
     background-color: #fef08a !important;
+
     border: 1px solid #facc15;
 }
 
@@ -264,9 +353,12 @@ body {
 
 .btn-sm {
     padding: 4px 8px;
+
     font-size: 11px;
+
     border: none;
     border-radius: 3px;
+
     cursor: pointer;
 }
 
@@ -278,6 +370,7 @@ body {
 .btn-del {
     background: #ef4444;
     color: white;
+
     margin-left: 4px;
 }
 
@@ -304,89 +397,126 @@ body {
 
 .table-box {
     width: 100%;
+
     margin: 0 auto 20px auto;
+
     background: white;
+
     border: 1px solid #d1d5db;
 }
 
 .table-box-2 {
     margin-top: 0;
     margin-bottom: 5px;
+
     border-top: none;
 }
 
 table {
     width: 100%;
+
     border-collapse: collapse;
+
     table-layout: fixed;
 }
 
 th,
 td {
     border: 1px solid #d1d5db;
+
     height: 26px;
+
     padding: 2px 4px;
+
     text-align: center;
     vertical-align: middle;
 }
 
 th {
     background: #111827;
+
     color: white;
+
     font-size: 13px;
+
     font-weight: bold;
 }
 
 td {
     background: white;
+
     font-size: 14px;
 }
 
 .miki {
     text-align: left;
+
     padding-left: 12px;
+
     font-weight: bold;
 }
 
 .label-cell {
     font-weight: bold;
+
     text-align: center;
 }
 
 .active-customer-box {
     text-align: center;
+
     font-weight: bold;
+
     color: #1d4ed8;
+
     font-size: 15px;
+
     background: #eff6ff;
+
     padding: 4px;
+
     border-radius: 4px;
+
     word-break: break-word;
 }
 
 table input {
     width: 100%;
+
     max-width: 100%;
+
     height: 22px;
+
     padding: 2px;
+
     border: 1px solid #9ca3af;
+
     border-radius: 4px;
+
     text-align: center;
+
     font-size: 14px;
+
     background: white;
 }
 
 .miki-net-total-large {
     font-size: 10px !important;
+
     font-weight: bold;
+
     color: #dc2626;
+
     text-align: left;
+
     padding-left: 12px;
 }
 
 .net-total-large {
     font-size: 25px !important;
+
     font-weight: bold;
+
     color: #dc2626;
 }
 
@@ -401,42 +531,54 @@ table input {
 
 .table-box-2 table input {
     font-size: 11px;
+
     height: 24px;
+
     padding: 1px 2px;
 }
 
 .table-box-2 table input.name-input {
     text-align: left;
+
     padding-left: 4px;
 }
 
 .table-box-2 table input.readonly-col {
     background: #f9fafb;
+
     border: none;
 }
 
 .colln-header {
     background: #f59e0b !important;
+
     color: #000000 !important;
 }
 
 .table-box-2 table input.colln-input {
     background: #fef3c7 !important;
+
     border: 1px solid #f59e0b !important;
+
     font-weight: bold;
 }
 
 .table-box-2 th,
 th.lockable-header {
     font-size: 10px;
+
     padding: 2px 1px;
+
     cursor: pointer;
+
     user-select: none;
 }
 
 .direct-amount-input {
     width: 100% !important;
+
     height: 24px !important;
+
     font-weight: bold;
 }
 
@@ -450,8 +592,11 @@ table input:focus {
 
 .net-total-red {
     font-weight: bold;
+
     color: #dc2626;
+
     font-size: 10px;
+
     padding: 0 1px;
 }
 
@@ -462,59 +607,88 @@ table input:focus {
 
 .sync-panel {
     display: grid;
+
     grid-template-columns: repeat(4, 1fr) 90px;
+
     gap: 6px;
+
     padding: 10px;
+
     background: #111827;
+
     border-top: 1px solid #d1d5db;
+
     align-items: flex-end;
 }
 
 .sync-cell {
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 }
 
 .sync-cell label {
     color: white;
+
     font-size: 11px;
+
     font-weight: bold;
+
     margin-bottom: 4px;
+
     text-transform: uppercase;
 }
 
 .sync-cell input {
     width: 100%;
+
     height: 32px;
+
     padding: 4px;
+
     border: 1px solid #9ca3af;
+
     border-radius: 4px;
+
     text-align: center;
+
     font-size: 14px;
+
     background: white;
 }
 
 .btn-container {
     display: flex;
+
     flex-direction: column;
+
     gap: 4px;
 }
 
 .action-btn {
     width: 100%;
+
     height: 32px;
+
     color: white;
+
     border: none;
+
     border-radius: 4px;
+
     font-size: 11px;
+
     font-weight: bold;
+
     cursor: pointer;
 }
 
 .install-btn {
     background: #2563eb;
+
     display: none;
 }
 
@@ -530,28 +704,38 @@ table input:focus {
 
 .table-box-3 {
     width: 100%;
+
     margin: 0 auto 5px auto;
+
     border-top: none;
 }
 
 .table-box-3 table {
     width: 100%;
+
     table-layout: fixed;
 }
 
 .table-box-3 th,
 .table-box-3 td {
     height: 26px;
+
     padding: 2px;
+
     border: 1px solid #d1d5db;
+
     text-align: center;
+
     vertical-align: middle;
 }
 
 .table-box-3 th {
     background: #111827;
+
     color: white;
+
     font-size: 10px;
+
     font-weight: bold;
 }
 
@@ -561,21 +745,29 @@ table input:focus {
 
 .table-box-3 input {
     width: 100%;
+
     height: 23px;
+
     padding: 2px 4px;
+
     border: 1px solid #9ca3af;
+
     border-radius: 3px;
+
     font-size: 12px;
+
     background: white;
 }
 
 .table-box-3 .extra-item-input {
     text-align: left;
+
     padding-left: 5px;
 }
 
 .table-box-3 .extra-amount-input {
     text-align: right;
+
     padding-right: 5px;
 }
 
@@ -586,31 +778,41 @@ table input:focus {
 
 .third-summary-cell {
     padding: 3px !important;
+
     vertical-align: middle !important;
 }
 
 .summary-label {
     font-size: 9px;
+
     font-weight: bold;
+
     margin-bottom: 2px;
 }
 
 
-/* COLL'N + AMOUNTS */
+/* ============================================================
+   COLLECTION + AMOUNTS
+   ============================================================ */
 
 .collection-summary-cell {
     background: #eff6ff !important;
+
     color: #1d4ed8;
+
     font-weight: bold;
 }
 
 .collection-summary-cell > div:last-child {
     font-size: 18px;
+
     font-weight: bold;
 }
 
 
-/* COH */
+/* ============================================================
+   COH
+   ============================================================ */
 
 .coh-cell {
     background: #fef3c7 !important;
@@ -618,38 +820,53 @@ table input:focus {
 
 .coh-cell input {
     width: 90% !important;
+
     height: 25px !important;
+
     font-size: 15px !important;
+
     font-weight: bold;
+
     text-align: right !important;
 }
 
 
-/* GRAND TOTAL */
+/* ============================================================
+   GRAND TOTAL
+   ============================================================ */
 
 .grand-total-cell {
     background: #fee2e2 !important;
+
     color: #dc2626;
+
     font-weight: bold;
 }
 
 .grand-total-cell > div:last-child {
     font-size: 22px;
+
     font-weight: bold;
 }
 
 
-/* THIRD TABLE TOTALS */
+/* ============================================================
+   THIRD TABLE TOTALS
+   ============================================================ */
 
 .extra-total-label {
     font-size: 9px !important;
+
     font-weight: bold;
+
     color: #dc2626;
 }
 
 .extra-total-amount {
     font-size: 11px !important;
+
     font-weight: bold;
+
     color: #dc2626;
 }
 
@@ -660,12 +877,26 @@ table input:focus {
 
 @media (max-width: 400px) {
 
-        .session-info {
+    /* SESSION HEADER */
+
+    .session-bar {
+        padding: 7px 8px;
+
+        gap: 4px;
+    }
+
+    .session-info {
         min-height: 40px;
+
+        flex: 1 1 auto;
+
+        min-width: 0;
     }
 
     .date-watermark {
         font-size: 48px;
+
+        left: 0;
     }
 
     #displayFileDate {
@@ -678,11 +909,31 @@ table input:focus {
 
     #displayFileName {
         font-size: 10px;
+
         max-width: 110px;
     }
+
+    .session-actions {
+        gap: 3px;
+
+        flex-shrink: 0;
+
+        white-space: nowrap;
+    }
+
+    .session-actions .btn-sm {
+        padding: 4px 6px;
+
+        font-size: 10px;
+    }
+
+
+    /* TABLES */
+
     th,
     td {
         height: 24px;
+
         padding: 1px;
     }
 
@@ -704,6 +955,7 @@ table input:focus {
 
     .table-box-3 input {
         font-size: 10px;
+
         height: 22px;
     }
 
@@ -718,8 +970,87 @@ table input:focus {
     .summary-label {
         font-size: 8px;
     }
+
+
+    /* NOTE */
+
+    .note-bar {
+        width: 160px !important;
+
+        min-width: 160px !important;
+
+        max-width: 160px !important;
+
+        margin-top: 4px;
+    }
+
+    #newTableNote {
+        display: block;
+
+        width: 160px !important;
+
+        min-width: 160px !important;
+
+        max-width: 160px !important;
+
+        box-sizing: border-box;
+
+        padding: 6px 10px;
+
+        border: 1px solid #ccc;
+
+        border-radius: 4px;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        outline: none;
+    }
+
+    #newTableNote:focus {
+        border-color: #107c41;
+    }
+
+
+    /* FORCE NOTE INPUT SIZE */
+
+    div#newTableNoteBar.note-bar > input#newTableNote {
+        width: 160px !important;
+
+        min-width: 160px !important;
+
+        max-width: 160px !important;
+
+        flex: 0 0 160px !important;
+
+        display: block !important;
+
+        box-sizing: border-box !important;
+
+        padding: 6px 10px;
+
+        border: 1px solid #ccc;
+
+        border-radius: 4px;
+
+        font-size: 14px;
+
+        font-weight: 600;
+
+        outline: none;
+    }
+}
+
+
+/* ============================================================
+   NEON PULSE
+   ============================================================ */
+
 @keyframes neonPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 0 0 3px #00ffcc;
     }
 
@@ -728,51 +1059,4 @@ table input:focus {
             0 0 5px #00ffcc,
             0 0 8px #00ffcc;
     }
-    .note-bar {
-    width: 160px !important;
-    max-width: 160px !important;
-    margin-top: 4px;
-}
-
-#newTableNote {
-    display: block;
-    width: 160px !important;
-    min-width: 0 !important;
-    max-width: 160px !important;
-    box-sizing: border-box;
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    outline: none;
-}
-
-#newTableNote:focus {
-    border-color: #107c41;
-}
-/* FORCE NOTE INPUT SIZE */
-.note-bar {
-    width: 160px !important;
-    min-width: 160px !important;
-    max-width: 160px !important;
-    margin-top: 4px;
-}
-
-div#newTableNoteBar.note-bar > input#newTableNote {
-    width: 160px !important;
-    min-width: 160px !important;
-    max-width: 160px !important;
-    flex: 0 0 160px !important;
-    display: block !important;
-    box-sizing: border-box !important;
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    outline: none;
-}
-}
-}
 }
