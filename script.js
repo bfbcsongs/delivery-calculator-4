@@ -2767,14 +2767,31 @@ function renderHistoryUI(
 
 
         const strong =
-            document.createElement(
-                "strong"
-            );
+    document.createElement(
+        "strong"
+    );
 
+const savedDate =
+    new Date(
+        item.date + "T00:00:00"
+    );
 
-        strong.textContent =
-            item.date;
+const monthNames = [
+    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+];
 
+const formattedSavedDate =
+    !isNaN(savedDate.getTime())
+        ? monthNames[savedDate.getMonth()] +
+          " " +
+          String(savedDate.getDate()).padStart(2, "0") +
+          ", " +
+          savedDate.getFullYear()
+        : item.date;
+
+strong.textContent =
+    formattedSavedDate;
 
         infoDiv.appendChild(
             strong
