@@ -2679,7 +2679,11 @@ function renderHistoryUI(
 
 
     historyCount.textContent =
-        `${history.length} / 30`;
+    `${history.length} / 30`;
+
+history.sort((a, b) => {
+    return b.date.localeCompare(a.date);
+});
 
 
     if (history.length === 0) {
