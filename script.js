@@ -544,12 +544,12 @@ function saveGlobalPrices() {
     const pCab = document.getElementById("priceCab")?.value;
     const pBo = document.getElementById("priceBo")?.value;
 
-    if (pReg !== undefined || pFresh !== undefined || pCab !== undefined || pBo !== undefined) {
+    if (pReg !== undefined && pFresh !== undefined && pCab !== undefined && pBo !== undefined) {
         localStorage.setItem("miki_saved_prices", JSON.stringify({
-            reg: pReg || "",
-            fresh: pFresh || "",
-            cab: pCab || "",
-            bo: pBo || ""
+            reg: pReg,
+            fresh: pFresh,
+            cab: pCab,
+            bo: pBo
         }));
     }
 }
@@ -797,8 +797,8 @@ function restoreLedgerData(data) {
 
     updateSessionDateDisplay();
 
-    // RESTORE PRICES / MULTIPLIERS
-    if (data.prices) {
+    // RESTORE PRICES / MULTIPLIERS (May Fallback sa Global Prices para hindi mabura)
+    if (data.prices && (data.prices.reg !== "" || data.prices.fresh !== "" || data.prices.cab !== "" || data.prices.bo !== "")) {
         if (data.prices.reg !== undefined && document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
         if (data.prices.fresh !== undefined && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
         if (data.prices.cab !== undefined && document.getElementById("priceCab")) document.getElementById("priceCab").value = data.prices.cab;
@@ -837,10 +837,10 @@ function restoreLedgerData(data) {
 function restoreGlobalPrices() {
     const savedPrices = JSON.parse(localStorage.getItem("miki_saved_prices"));
     if (savedPrices) {
-        if (savedPrices.reg !== undefined && document.getElementById("priceReg")) document.getElementById("priceReg").value = savedPrices.reg;
-        if (savedPrices.fresh !== undefined && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = savedPrices.fresh;
-        if (savedPrices.cab !== undefined && document.getElementById("priceCab")) document.getElementById("priceCab").value = savedPrices.cab;
-        if (savedPrices.bo !== undefined && document.getElementById("priceBo")) document.getElementById("priceBo").value = savedPrices.bo;
+        if (savedPrices.reg && document.getElementById("priceReg")) document.getElementById("priceReg").value = savedPrices.reg;
+        if (savedPrices.fresh && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = savedPrices.fresh;
+        if (savedPrices.cab && document.getElementById("priceCab")) document.getElementById("priceCab").value = savedPrices.cab;
+        if (savedPrices.bo && document.getElementById("priceBo")) document.getElementById("priceBo").value = savedPrices.bo;
     }
 }
 
@@ -1046,6 +1046,7 @@ function renderHistoryUI(selectedDateKey = null) {
 // ============================================================
 
 function loadLedger() {
+    // Unang-unang ilagay ang global prices bago mag-load ng anuman
     restoreGlobalPrices();
     renderHistoryUI();
 
