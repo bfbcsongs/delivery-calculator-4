@@ -632,13 +632,15 @@
 
                                 <td>
 
-                                    <input type="text"
-                                           class="readonly-col colln-input"
-                                           id="ledgerPay_${i}"
-                                           readonly
-                                           onfocus="loadRowToMain(${i})">
+    <input type="text"
+           class="readonly-col colln-input"
+           id="ledgerPay_${i}"
+           readonly
+           onclick="handleRowCollTap(${i})"
+           onfocus="loadRowToMain(${i})">
 
-                                </td>
+</td>
+
 
 
                                 <td>
