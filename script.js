@@ -75,6 +75,11 @@ let isPreviewMode = false;
 let previewDateKey = null;
 let previewBackup = null;
 
+// ROW UTANG MODE TRACKER (Para sa 5-tap sa Coll'n)
+let rowUtangMode = {};
+let rowTapCounts = {};
+let rowTapTimers = {};
+
 // DEBOUNCE SAVE TIMER
 let saveTimeout = null;
 
@@ -296,6 +301,7 @@ function resetLedgerState() {
 
     currentSessionDate = "";
     currentSessionName = "";
+    rowUtangMode = {};
 
     updateSessionDateDisplay();
     clearAllLedgerInputs();
@@ -324,6 +330,8 @@ function clearAllLedgerInputs() {
         document.getElementById(`ledgerPay_${i}`).value = "";
         document.getElementById(`ledgerRem_${i}`).value = "";
     }
+
+    rowUtangMode = {};
 
     for (let i = 1; i <= 8; i++) {
         document.getElementById(`extraItem_${i}`).value = "";
@@ -404,6 +412,48 @@ function togglePriceLockState(locked) {
         field.readOnly = locked;
         field.style.backgroundColor = locked ? "#e5e7eb" : "white";
     });
+}
+
+// ============================================================
+// 5-TAP HANDLER FOR COLL'N (Row Utang Mode)
+// ============================================================
+
+function handleRowCollTap(row) {
+    if (isPreviewMode) return;
+
+    if (!rowTapCounts[row]) rowTapCounts[row] = 0;
+    rowTapCounts[row]++;
+
+    clearTimeout(rowTapTimers[row]);
+    rowTapTimers[row] = setTimeout(() => {
+        rowTapCounts[row] = 0;
+    }, 1000);
+
+    if (rowTapCounts[row] >= 5) {
+        rowTapCounts[row] = 0;
+        rowUtangMode[row] = !rowUtangMode[row];
+
+        if (row === activeRow) {
+            calculateMain();
+        } else {
+            const billingEl = document.getElementById(`ledgerBilling_${row}`);
+            const payEl = document.getElementById(`ledgerPay_${row}`);
+            const remEl = document.getElementById(`ledgerRem_${row}`);
+
+            if (billingEl && payEl && remEl) {
+                const billingVal = parseFloat(billingEl.value.replace(/,/g, '')) || 0;
+                if (rowUtangMode[row]) {
+                    payEl.value = "";
+                    remEl.value = formatMoney(billingVal);
+                } else {
+                    payEl.value = formatMoney(billingVal);
+                    remEl.value = "0";
+                }
+                calculateLedgerTotals();
+                saveLedger();
+            }
+        }
+    }
 }
 
 // ============================================================
@@ -524,11 +574,19 @@ function calculateMain() {
     document.getElementById(`ledgerBilling_${activeRow}`).value = formatMoney(billingAmount);
 
     const hasPayEntry = document.getElementById("inputPay").value.trim() !== "";
-    const collnVal = hasPayEntry ? payAmount : billingAmount;
+    let collnVal = 0;
+    let remVal = 0;
 
-    document.getElementById(`ledgerPay_${activeRow}`).value = formatMoney(collnVal);
+    if (rowUtangMode[activeRow]) {
+        collnVal = 0;
+        remVal = billingAmount;
+        document.getElementById(`ledgerPay_${activeRow}`).value = "";
+    } else {
+        collnVal = hasPayEntry ? payAmount : billingAmount;
+        remVal = billingAmount - collnVal;
+        document.getElementById(`ledgerPay_${activeRow}`).value = formatMoney(collnVal);
+    }
 
-    const remVal = billingAmount - collnVal;
     document.getElementById(`ledgerRem_${activeRow}`).value = formatMoney(remVal);
 
     // SAVE MULTIPLIERS / PRICES GLOBALLY
@@ -581,7 +639,7 @@ function loadRowToMain(row) {
     const rawColln = document.getElementById(`ledgerPay_${row}`).value.replace(/,/g, '');
     const rawBilling = document.getElementById(`ledgerBilling_${row}`).value.replace(/,/g, '');
 
-    document.getElementById("inputPay").value = (rawColln !== rawBilling) ? rawColln : "";
+    document.getElementById("inputPay").value = (rawColln !== rawBilling && rawColln !== "") ? rawColln : "";
 
     calculateMain();
 }
@@ -679,6 +737,7 @@ function saveLedger() {
         date: currentSessionDate,
         name: currentSessionName,
         rows: {},
+        utangModes: rowUtangMode, // Isinama ang utang states
         extraTable: {
             note: noteElement ? noteElement.value : ""
         },
@@ -750,6 +809,7 @@ function getCurrentLedgerSnapshot() {
         date: currentSessionDate,
         name: currentSessionName,
         rows: {},
+        utangModes: { ...rowUtangMode },
         extraTable: {
             note: document.getElementById("newTableNote")?.value || ""
         },
@@ -794,10 +854,10 @@ function restoreLedgerData(data) {
 
     currentSessionDate = data.date || "";
     currentSessionName = data.name || "";
+    rowUtangMode = data.utangModes ? { ...data.utangModes } : {};
 
     updateSessionDateDisplay();
 
-    // RESTORE PRICES / MULTIPLIERS (May Fallback sa Global Prices para hindi mabura)
     if (data.prices && (data.prices.reg !== "" || data.prices.fresh !== "" || data.prices.cab !== "" || data.prices.bo !== "")) {
         if (data.prices.reg !== undefined && document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
         if (data.prices.fresh !== undefined && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
@@ -939,6 +999,7 @@ function exitHistoryPreview() {
 
     currentSessionDate = "";
     currentSessionName = "";
+    rowUtangMode = {};
 
     updateSessionDateDisplay();
     clearAllLedgerInputs();
@@ -1046,11 +1107,9 @@ function renderHistoryUI(selectedDateKey = null) {
 // ============================================================
 
 function loadLedger() {
-    // Unang-unang ilagay ang global prices bago mag-load ng anuman
     restoreGlobalPrices();
     renderHistoryUI();
 
-    // Attach Price Inputs Change Listeners
     const priceInputs = document.querySelectorAll('.price-input');
     priceInputs.forEach(input => {
         input.addEventListener('input', calculateMain);
