@@ -1,4 +1,12 @@
 // ============================================================
+// DEFAULT CUSTOMER NAMES (Rows 1 to 12)
+// ============================================================
+const DEFAULT_NAMES = [
+    "Bag", "Ces", "Ed", "Ris", "Raq", "Lin",
+    "Lea", "Jen", "Swe", "Lan", "Jea", "Flo"
+];
+
+// ============================================================
 // PWA INSTALL PROMPT HANDLER
 // ============================================================
 
@@ -267,6 +275,8 @@ function handleModalSubmit() {
         setPreviewMode(false);
         setEncodingEditable(true);
         resetInactivityTimer();
+
+        applyDefaultNamesIfEmpty();
         saveLedger();
     }
 }
@@ -314,14 +324,25 @@ function resetLedgerState() {
 }
 
 // ============================================================
-// CLEAR EVERYTHING
+// APPLY DEFAULT NAMES
 // ============================================================
+
+function applyDefaultNamesIfEmpty() {
+    for (let i = 1; i <= 12; i++) {
+        const el = document.getElementById(`ledgerName_${i}`);
+        if (el && (!el.value || el.value.trim() === "")) {
+            el.value = DEFAULT_NAMES[i - 1];
+        }
+    }
+    updateActiveCustomerName(activeRow);
+}
 
 function clearAllLedgerInputs() {
     clearMainInputs();
 
     for (let i = 1; i <= 16; i++) {
-        document.getElementById(`ledgerName_${i}`).value = "";
+        const defaultName = i <= 12 ? DEFAULT_NAMES[i - 1] : "";
+        document.getElementById(`ledgerName_${i}`).value = defaultName;
         document.getElementById(`ledgerDry_${i}`).value = "";
         document.getElementById(`ledgerFresh_${i}`).value = "";
         document.getElementById(`ledgerCab_${i}`).value = "";
@@ -345,7 +366,7 @@ function clearAllLedgerInputs() {
     if (note) note.value = "";
 
     activeRow = 1;
-    document.getElementById("activeCustomerDisplay").textContent = "Row 1";
+    updateActiveCustomerName(1);
 
     calculateLedgerTotals();
     calculateExtraTable();
@@ -885,7 +906,9 @@ function restoreLedgerData(data) {
     }
 
     for (let i = 1; i <= 16; i++) {
-        if (data.rows && data.rows[`name_${i}`] !== undefined) document.getElementById(`ledgerName_${i}`).value = data.rows[`name_${i}`];
+        if (data.rows && data.rows[`name_${i}`] !== undefined) {
+            document.getElementById(`ledgerName_${i}`).value = data.rows[`name_${i}`];
+        }
         if (data.rows && data.rows[`dry_${i}`] !== undefined) document.getElementById(`ledgerDry_${i}`).value = data.rows[`dry_${i}`];
         if (data.rows && data.rows[`fresh_${i}`] !== undefined) document.getElementById(`ledgerFresh_${i}`).value = data.rows[`fresh_${i}`];
         if (data.rows && data.rows[`cab_${i}`] !== undefined) document.getElementById(`ledgerCab_${i}`).value = data.rows[`cab_${i}`];
@@ -906,6 +929,9 @@ function restoreLedgerData(data) {
         const noteElement = document.getElementById("newTableNote");
         if (noteElement) noteElement.value = data.extraTable.note || "";
     }
+
+    // Force default names on empty fields
+    applyDefaultNamesIfEmpty();
 
     calculateLedgerTotals();
     calculateExtraTable();
