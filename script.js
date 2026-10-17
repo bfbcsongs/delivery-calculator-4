@@ -267,6 +267,7 @@ function handleModalSubmit() {
         setPreviewMode(false);
         setEncodingEditable(true);
         resetInactivityTimer();
+        saveLedger();
     }
 }
 
@@ -612,6 +613,23 @@ function saveGlobalPrices() {
     }
 }
 
+function restoreGlobalPrices() {
+    const savedPrices = JSON.parse(localStorage.getItem("miki_saved_prices"));
+    
+    if (document.getElementById("priceReg")) {
+        document.getElementById("priceReg").value = savedPrices?.reg || "50";
+    }
+    if (document.getElementById("priceFresh")) {
+        document.getElementById("priceFresh").value = savedPrices?.fresh || "50";
+    }
+    if (document.getElementById("priceCab")) {
+        document.getElementById("priceCab").value = savedPrices?.cab || "40";
+    }
+    if (document.getElementById("priceBo")) {
+        document.getElementById("priceBo").value = savedPrices?.bo || "50";
+    }
+}
+
 // ============================================================
 // LOAD ROW
 // ============================================================
@@ -737,7 +755,7 @@ function saveLedger() {
         date: currentSessionDate,
         name: currentSessionName,
         rows: {},
-        utangModes: rowUtangMode, // Isinama ang utang states
+        utangModes: rowUtangMode,
         extraTable: {
             note: noteElement ? noteElement.value : ""
         },
@@ -858,13 +876,12 @@ function restoreLedgerData(data) {
 
     updateSessionDateDisplay();
 
-    if (data.prices && (data.prices.reg !== "" || data.prices.fresh !== "" || data.prices.cab !== "" || data.prices.bo !== "")) {
-        if (data.prices.reg !== undefined && document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
-        if (data.prices.fresh !== undefined && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
-        if (data.prices.cab !== undefined && document.getElementById("priceCab")) document.getElementById("priceCab").value = data.prices.cab;
-        if (data.prices.bo !== undefined && document.getElementById("priceBo")) document.getElementById("priceBo").value = data.prices.bo;
-    } else {
-        restoreGlobalPrices();
+    restoreGlobalPrices();
+    if (data.prices) {
+        if (data.prices.reg && document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
+        if (data.prices.fresh && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
+        if (data.prices.cab && document.getElementById("priceCab")) document.getElementById("priceCab").value = data.prices.cab;
+        if (data.prices.bo && document.getElementById("priceBo")) document.getElementById("priceBo").value = data.prices.bo;
     }
 
     for (let i = 1; i <= 16; i++) {
@@ -892,16 +909,6 @@ function restoreLedgerData(data) {
 
     calculateLedgerTotals();
     calculateExtraTable();
-}
-
-function restoreGlobalPrices() {
-    const savedPrices = JSON.parse(localStorage.getItem("miki_saved_prices"));
-    if (savedPrices) {
-        if (savedPrices.reg && document.getElementById("priceReg")) document.getElementById("priceReg").value = savedPrices.reg;
-        if (savedPrices.fresh && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = savedPrices.fresh;
-        if (savedPrices.cab && document.getElementById("priceCab")) document.getElementById("priceCab").value = savedPrices.cab;
-        if (savedPrices.bo && document.getElementById("priceBo")) document.getElementById("priceBo").value = savedPrices.bo;
-    }
 }
 
 // ============================================================
