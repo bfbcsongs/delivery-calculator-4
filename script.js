@@ -609,6 +609,7 @@ function saveGlobalPrices() {
             cab: pCab,
             bo: pBo
         }));
+        debouncedSaveLedger();
     }
 }
 
@@ -858,13 +859,15 @@ function restoreLedgerData(data) {
 
     updateSessionDateDisplay();
 
-    if (data.prices && (data.prices.reg !== "" || data.prices.fresh !== "" || data.prices.cab !== "" || data.prices.bo !== "")) {
-        if (data.prices.reg !== undefined && document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
-        if (data.prices.fresh !== undefined && document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
-        if (data.prices.cab !== undefined && document.getElementById("priceCab")) document.getElementById("priceCab").value = data.prices.cab;
-        if (data.prices.bo !== undefined && document.getElementById("priceBo")) document.getElementById("priceBo").value = data.prices.bo;
-    } else {
-        restoreGlobalPrices();
+    // 1. Restore global saved prices first
+    restoreGlobalPrices();
+
+    // 2. Only override prices from active draft if explicit non-empty values exist
+    if (data.prices && data.prices.reg && data.prices.reg !== "") {
+        if (document.getElementById("priceReg")) document.getElementById("priceReg").value = data.prices.reg;
+        if (document.getElementById("priceFresh")) document.getElementById("priceFresh").value = data.prices.fresh;
+        if (document.getElementById("priceCab")) document.getElementById("priceCab").value = data.prices.cab;
+        if (document.getElementById("priceBo")) document.getElementById("priceBo").value = data.prices.bo;
     }
 
     for (let i = 1; i <= 16; i++) {
