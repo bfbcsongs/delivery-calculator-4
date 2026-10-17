@@ -1,11 +1,11 @@
 // ============================================================
-// DEFAULT CUSTOMER NAMES (Rows 1 to 12)
+// DEFAULT CUSTOMER NAMES (Rows 1 to 16)
 // ============================================================
 const DEFAULT_NAMES = [
-    "Bag", "Ces", "Ed", "Ris", "Raq", "Lin", "7/11", "Lea", "Jen", "Swe", "Lan", "Jea",
-    "", "", "", "Flor"
+    "Bag", "Ces", "Ed", "Ris", "Raq", "Lin", 
+    "7/11", "", "", "", "Lea", "Jen", 
+    "Swe", "Lan", "Jea", "Flor"
 ];
-
 
 // ============================================================
 // PWA INSTALL PROMPT HANDLER
@@ -329,10 +329,10 @@ function resetLedgerState() {
 // ============================================================
 
 function applyDefaultNamesIfEmpty() {
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 16; i++) {
         const el = document.getElementById(`ledgerName_${i}`);
         if (el && (!el.value || el.value.trim() === "")) {
-            el.value = DEFAULT_NAMES[i - 1];
+            el.value = DEFAULT_NAMES[i - 1] || "";
         }
     }
     updateActiveCustomerName(activeRow);
@@ -342,7 +342,7 @@ function clearAllLedgerInputs() {
     clearMainInputs();
 
     for (let i = 1; i <= 16; i++) {
-        const defaultName = i <= 12 ? DEFAULT_NAMES[i - 1] : "";
+        const defaultName = DEFAULT_NAMES[i - 1] || "";
         document.getElementById(`ledgerName_${i}`).value = defaultName;
         document.getElementById(`ledgerDry_${i}`).value = "";
         document.getElementById(`ledgerFresh_${i}`).value = "";
@@ -653,7 +653,7 @@ function restoreGlobalPrices() {
 }
 
 // ============================================================
-// LOAD ROW
+// LOAD ROW (FIXED PAYMENT BLANK ISSUE)
 // ============================================================
 
 function loadRowToMain(row) {
@@ -677,9 +677,9 @@ function loadRowToMain(row) {
     document.getElementById("inputBal").value = document.getElementById(`ledgerBal_${row}`).value;
 
     const rawColln = document.getElementById(`ledgerPay_${row}`).value.replace(/,/g, '');
-    const rawBilling = document.getElementById(`ledgerBilling_${row}`).value.replace(/,/g, '');
 
-    document.getElementById("inputPay").value = (rawColln !== rawBilling && rawColln !== "") ? rawColln : "";
+    // Inayos para palaging i-load ang totoong pumasok na payment value
+    document.getElementById("inputPay").value = rawColln !== "" ? rawColln : "";
 
     calculateMain();
 }
@@ -931,7 +931,6 @@ function restoreLedgerData(data) {
         if (noteElement) noteElement.value = data.extraTable.note || "";
     }
 
-    // Force default names on empty fields
     applyDefaultNamesIfEmpty();
 
     calculateLedgerTotals();
