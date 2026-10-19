@@ -4,7 +4,7 @@
 const DEFAULT_NAMES = [
     "Bag", "Ces", "Ed", "Ris", "Raq", "Lin", 
     "7/11", "Lea", "Jen", 
-    "Swe", "Lan", "Jea", "", "", "", "Flor"
+    "Swe", "Lan", "Jean", "Ling²", "", "", "Flor"
 ];
 
 // ============================================================
